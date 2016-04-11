@@ -13,6 +13,7 @@ public class loadingScene : MonoBehaviour {
     [SerializeField]Text loading;
 
 	void Start () {
+        UnityEngine.VR.VRSettings.enabled = true;
         rand = new Random();
         loader = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         loader.allowSceneActivation = false;
@@ -72,7 +73,7 @@ public class loadingScene : MonoBehaviour {
         c.a = Mathf.Clamp(value, 0, 1);
         //Set loaded scene as active scene
         Debug.Log("makeActive(): finished");
-        loader.allowSceneActivation = true;
+        //loader.allowSceneActivation = true;
         //SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
     }
     IEnumerator progress() {

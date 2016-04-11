@@ -8,16 +8,22 @@ public class keyBinding : MonoBehaviour {
     public static List<InputButton> buttons = new List<InputButton>();
 	public void Start()
     {
-        addButton(new InputKey("Jump", KeyCode.Space, XboxKey.A));  //0
-        addButton(new InputAxis("LookX", "Mouse X", XboxAxis.RightStickX)); //1
-        addButton(new InputAxis("LookY", "Mouse Y", XboxAxis.RightStickY)); //2
-        addButton(new InputAxis("Horizontal", "Horizontal", XboxAxis.LeftStickX)); //3
-        addButton(new InputAxis("Vertical", "Vertical", XboxAxis.LeftStickY)); //4
-        addButton(new InputKey("Sprint", KeyCode.LeftShift, XboxKey.LeftStick)); //5
-        addButton(new InputKey("JetPack", KeyCode.J, XboxKey.X));   //6
-        addButton(new InputKey("Ctrl", KeyCode.LeftControl, XboxKey.RightStick)); //7
-        addButton(new InputAxis("ShiftAxis", "", XboxAxis.LeftTrigger)); //8
-        addButton(new InputAxis("CtrlAxis", "", XboxAxis.RightTrigger)); //9
+
+        addButton(new InputKey("Select", KeyCode.Space, XboxKey.A));
+        addButton(new InputAxis("VerticalAxis", "wasd_ws", XboxAxis.LeftStickY));
+        addButton(new InputAxis("HorizontalAxis", "wasd_ad", XboxAxis.LeftStickX));
+        //my script doesn't suppor alternative keys, so we're implementing a shitty fix for that
+        //create an InputKey for each key, so in total eight for WASD and Arrow Keys. Only use if !managerMain.isConnected
+        //this is shitty, I am aware
+        addButton(new InputKey("w", KeyCode.W, XboxKey.A));             //Vertical Positive - Primary
+        addButton(new InputKey("s", KeyCode.S, XboxKey.A));             //Vertical Negative - Primary
+        addButton(new InputKey("a", KeyCode.A, XboxKey.A));             //Horizontal Negative - Primary
+        addButton(new InputKey("d", KeyCode.D, XboxKey.A));             //Horizontal Positive - Primary
+
+        addButton(new InputKey("upArrow", KeyCode.UpArrow, XboxKey.A));                 //Vertical Positive - Secondary
+        addButton(new InputKey("downArrow", KeyCode.DownArrow, XboxKey.A));             //Vertical Negative - Secondary
+        addButton(new InputKey("leftArrow", KeyCode.LeftArrow, XboxKey.A));             //Horizontal Negative - Secondary
+        addButton(new InputKey("rightArrow", KeyCode.RightArrow, XboxKey.A));           //Horizontal Positive - Secondary
     }
     public static void addButton(InputButton button) {
         buttons.Add(button);
