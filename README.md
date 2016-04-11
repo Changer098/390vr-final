@@ -1,2 +1,2 @@
-# 390vr-final
-Final project for cs390
+# Hand of God {Subject to Change}
+The final project for cs390vr
