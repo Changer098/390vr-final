@@ -53,6 +53,7 @@ public class menuNavigation : MonoBehaviour {
                         break;
                     case 1:
                         //calibrateBtn
+                        UnityEngine.VR.InputTracking.Recenter();
                         break;
                     case 2:
                         //playBtn
