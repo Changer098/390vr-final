@@ -10,8 +10,8 @@ public class keyBinding : MonoBehaviour {
     {
 
         addButton(new InputKey("Select", KeyCode.Space, XboxKey.A));
-        addButton(new InputAxis("VerticalAxis", "wasd_ws", XboxAxis.LeftStickY));
-        addButton(new InputAxis("HorizontalAxis", "wasd_ad", XboxAxis.LeftStickX));
+        addButton(new InputAxis("VerticalAxis", "Mouse Y", XboxAxis.LeftStickY));
+        addButton(new InputAxis("HorizontalAxis", "Mouse X", XboxAxis.LeftStickX));
         //my script doesn't suppor alternative keys, so we're implementing a shitty fix for that
         //create an InputKey for each key, so in total eight for WASD and Arrow Keys. Only use if !managerMain.isConnected
         //this is shitty, I am aware
