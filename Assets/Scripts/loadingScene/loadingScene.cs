@@ -6,27 +6,36 @@ using System.Collections;
 public class loadingScene : MonoBehaviour {
 
     AsyncOperation loader;
-    bool settingScene = false;
+    GameObject OVRCameraRig;
+    GameObject pureBlackObject;
+    bool transitioning = false;                                                     //change scenes
+    bool fading = false;
     bool changingColor = false;
     bool isDone = false;
     Random rand;
     [SerializeField]Text loading;
+    [SerializeField]GameObject TransferObjects;
 
 	void Start () {
-        UnityEngine.VR.VRSettings.enabled = true;
+        Debug.Log("Loaded scene");
+        OVRCameraRig = GameObject.Find("OVRCameraRig");                             //find the rig from the last scene, we need to undo the screen fade
+        pureBlackObject = GameObject.Find("blackBox");
+        StartCoroutine(unFade());
         rand = new Random();
-        loader = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        loader = SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
         loader.allowSceneActivation = false;
         StartCoroutine(colorChange());
-        StartCoroutine(progress());
+        transferObjects tObjects = TransferObjects.GetComponent<transferObjects>();                 //get the transferObjects script from the TransferObjects gameObject
+        tObjects.setCamera(OVRCameraRig);
 	}
     void Update() {
-        if (loader.isDone) {
+        if (isDone) {
             //do fade out
-            if (!settingScene) {
+            if (!transitioning && !fading) {
                 Debug.Log("Scene Management has finished loading the scene!");
-                settingScene = true;
-                StartCoroutine(makeActive());
+                transitioning = true;
+                StartCoroutine(dissapearText());
+                //dissapearText automatically triggers FadeAndLoad which sets the loaded scene as active
             }
         }
         if (loader.progress == 0.9f && !isDone) {
@@ -57,9 +66,8 @@ public class loadingScene : MonoBehaviour {
             }
         }
         changingColor = false;
-        StartCoroutine(makeActive());
     }
-    IEnumerator makeActive() {
+    IEnumerator dissapearText() {
         //fade out text color
         float value = loading.color.a;
         Color c = loading.color;
@@ -71,15 +79,43 @@ public class loadingScene : MonoBehaviour {
             yield return new WaitForSeconds(waitInterval);
         }
         c.a = Mathf.Clamp(value, 0, 1);
-        //Set loaded scene as active scene
         Debug.Log("makeActive(): finished");
-        //loader.allowSceneActivation = true;
-        //SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
+        StartCoroutine(FadeAndLoad());
     }
-    IEnumerator progress() {
-        while (!isDone) {
-            Debug.Log("progress: " + loader.progress);
-            yield return new WaitForSeconds(1);
+    IEnumerator unFade() {
+        fading = true;
+        Renderer render = pureBlackObject.GetComponent<Renderer>();
+        pureBlackObject.SetActive(true);
+
+        float waitTime = 0.025f;
+        float opacity = 1;
+        while (opacity > 0) {
+            Color c = render.material.color;
+            opacity = opacity - ((float)10 / (float)255);
+            c.a = opacity;
+            render.material.color = c;
+            yield return new WaitForSeconds(waitTime);
         }
+
+        fading = false;
+        pureBlackObject.SetActive(false);
+        Debug.Log("screenFade finished");
+    }
+    IEnumerator FadeAndLoad() {
+        Renderer render = pureBlackObject.GetComponent<Renderer>();
+        pureBlackObject.SetActive(true);
+
+        float waitTime = 0.025f;
+        float opacity = 0;
+        while (opacity < 1) {
+            Color c = render.material.color;
+            opacity = opacity + ((float)10 / (float)255);
+            c.a = opacity;
+            render.material.color = c;
+            yield return new WaitForSeconds(waitTime);
+        }
+        Debug.Log("screenFade finished, set game as active scene");
+        //loader will not actually finish and that's fine, so we just set it automatically activate.
+        loader.allowSceneActivation = true;
     }
 }
