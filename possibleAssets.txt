@@ -1,0 +1,13 @@
+[Particles]
+Elementals - https://www.assetstore.unity3d.com/en/#!/content/11158
+  Explosion when getting hit
+  Abducting citizens
+  Hitting the ground on load
+BasicBeamShot - https://www.assetstore.unity3d.com/en/#!/content/27665
+  Shooting from UFO
+Fire And Spell Effects - https://www.assetstore.unity3d.com/en/#!/content/36825
+Sky FX Pack- https://www.assetstore.unity3d.com/en/#!/content/19242
+  Dust Cloud for when huge impacts and destroying things
+  God Rays for abducting
+PopcornFX Discovery Pack - https://www.assetstore.unity3d.com/en/#!/content/26440
+  General awesomeness
