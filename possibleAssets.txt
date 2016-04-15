@@ -11,3 +11,10 @@ Sky FX Pack- https://www.assetstore.unity3d.com/en/#!/content/19242
   God Rays for abducting
 PopcornFX Discovery Pack - https://www.assetstore.unity3d.com/en/#!/content/26440
   General awesomeness
+[Models]
+Low Poly: Free Pack - https://www.assetstore.unity3d.com/en/#!/content/58821
+  General landscaping and props
+Low Poly: Styled Trees - https://www.assetstore.unity3d.com/en/#!/content/43103
+  Trees, happy little trees
+Low poly styled rocks - https://www.assetstore.unity3d.com/en/#!/content/43486
+  This was just a hard decision...
