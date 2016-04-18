@@ -12,10 +12,13 @@ public class InputHandler : MonoBehaviour {
     public Button quitBtn;
     public Button returnBtn;
     public Color SelectColor;                                   //Selection Color of UI Elements
+    public GameObject UFOobject;
+
     public bool gameIsPaused = false;
     private bool canMove = true;
     private bool canPause = true;
     private bool transitioning = false;
+    private UFOHandler ufoHandler;
 
     private Hashtable colorTable = new Hashtable();  //original colors
     private int index = 0;
@@ -37,6 +40,7 @@ public class InputHandler : MonoBehaviour {
         colorTable.Add("calibrateBtn", calibrateBtn.colors.normalColor);
         colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("returnBtn", returnBtn.colors.normalColor);
+        ufoHandler = UFOobject.GetComponent<UFOHandler>();
     }
 
     // Update is called once per frame
@@ -103,6 +107,10 @@ public class InputHandler : MonoBehaviour {
             if ((managerMain.GetKeyDown(GuideBtn) || managerMain.GetKeyDown(BackBtn) || managerMain.GetKeyDown(StartBtn)) && canPause) {
                 Debug.Log("Showing pause");
                 showPause();
+            }
+            if (ufoHandler.canMoveUFO()) {
+                //do move UFO
+                ufoHandler.updatePosition(managerMain.GetAxis(LeftUp), managerMain.GetAxis(LeftSide));
             }
         }
     }

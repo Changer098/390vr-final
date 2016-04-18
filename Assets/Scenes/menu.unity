@@ -366,6 +366,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -924,7 +925,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Settings
+  m_Text: Quit
 --- !u!222 &1071958273
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1642,6 +1643,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1761,9 +1763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 437915983}
-  settingsCanvas: {fileID: 1768660370}
   playBtn: {fileID: 804121404}
-  settingsBtn: {fileID: 2140160005}
+  quitBtn: {fileID: 2140160005}
   calibrateBtn: {fileID: 444882308}
   backBtn: {fileID: 876487948}
   controllerToggle: {fileID: 428308463}
@@ -1860,7 +1861,7 @@ GameObject:
   - 114: {fileID: 2140160006}
   - 114: {fileID: 2140160005}
   m_Layer: 5
-  m_Name: settingsBtn
+  m_Name: quitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

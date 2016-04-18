@@ -8,13 +8,13 @@ public class menuNavigation : MonoBehaviour {
 
     // Use this for initialization
     int index = -1;
-    int secondaryIndex = -1;
+    //int secondaryIndex = -1;
     public Canvas mainCanvas;
-    public Canvas settingsCanvas;
+    //public Canvas settingsCanvas;
     
     //mainCanvas elements
     public Button playBtn;
-    public Button settingsBtn;
+    public Button quitBtn;
     public Button calibrateBtn;
 
     //settingsCanvas elements
@@ -32,11 +32,11 @@ public class menuNavigation : MonoBehaviour {
     private Hashtable colorTable = new Hashtable();  //original colors
 	void Start () {
         index = 0;
-        secondaryIndex = -1;
+        //secondaryIndex = -1;
 
         //Create a hashtable of the original UIElement Colors. We change the color of the Element when it's active, else we set it to its original color
         colorTable.Add("playBtn", playBtn.colors.normalColor);
-        colorTable.Add("settingsBtn", settingsBtn.colors.normalColor);
+        colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("calibrateBtn", calibrateBtn.colors.normalColor);
         colorTable.Add("backBtn", backBtn.colors.normalColor);
         colorTable.Add("controllerToggle", controllerToggle.colors.normalColor);
@@ -56,34 +56,32 @@ public class menuNavigation : MonoBehaviour {
                     //mainCanvas
                     switch (index) {
                         case 0:
-                            //settingsBtn
-                            Debug.Log("Pressed Settings Btn");
+                            //quitBtn
+                            Debug.Log("Pressed Quit Btn");
+                            Application.Quit();
                             break;
                         case 1:
                             //calibrateBtn
+                            Debug.Log("Pressed Calibrate Btn");
                             UnityEngine.VR.InputTracking.Recenter();
                             break;
                         case 2:
                             //playBtn
+                            Debug.Log("Pressed Play Btn");
                             StartCoroutine(screenFadeOutAndLoad());
                             break;
                     }
-                }
-                else {
-                    //settingsCanvas
-
                 }
             }
             //Don't call get axis without controller
             if ((managerMain.currentInput.isXbox && managerMain.GetAxis(keyBinding.buttons[1]) != 0) || (!managerMain.currentInput.isXbox && GetAxisKeys(true) != 0)) {
                 //vertical axis activated
-                if (index != -1) {
                     //in the mainCanvas
                     if (managerMain.currentInput.isXbox) {
                         switch (index) {
                             case 0:
                                 if (managerMain.GetAxis(keyBinding.buttons[1]) < -0.4 && canMove) {
-                                    //settingsBtn, should navigate to playBtn
+                                    //quitBtn, should navigate to playBtn
                                     index = 2;
                                     selectObject();
                                     StartCoroutine(moveWait());
@@ -99,8 +97,8 @@ public class menuNavigation : MonoBehaviour {
                                 break;
                             case 2:
                                 if (managerMain.GetAxis(keyBinding.buttons[1]) > 0.4 && canMove) {
-                                    //playBtn, should navigate to settingsBtn
-                                    index = 0;
+                                //playBtn, should navigate to quitBtn
+                                index = 0;
                                     selectObject();
                                     StartCoroutine(moveWait());
                                 }
@@ -111,7 +109,7 @@ public class menuNavigation : MonoBehaviour {
                         switch (index) {
                             case 0:
                                 if (GetAxisKeys(true) < 0) {
-                                    //settingsBtn, should navigate to playBtn
+                                    //quitBtn, should navigate to playBtn
                                     index = 2;
                                     selectObject();
                                 }
@@ -125,33 +123,23 @@ public class menuNavigation : MonoBehaviour {
                                 break;
                             case 2:
                                 if (GetAxisKeys(true) > 0) {
-                                    //playBtn, should navigate to settingsBtn
-                                    index = 0;
+                                //playBtn, should navigate to quitBtn
+                                index = 0;
                                     selectObject();
                                 }
                                 break;
                         }
                     }
-                }
-                else {
-                    //in the settingsCanvas
-                    if (managerMain.currentInput.isXbox) {
 
-                    }
-                    else {
-
-                    }
-                }
             }
             else if ((managerMain.currentInput.isXbox && managerMain.GetAxis(keyBinding.buttons[2]) != 0) || (!managerMain.currentInput.isXbox && GetAxisKeys(false) != 0)) {
                 //horizontal axis activated
-                if (index != -1) {
                     if (managerMain.currentInput.isXbox) {
                         //opposite direction
                         switch (index) {
                             case 0:
                                 if (managerMain.GetAxis(keyBinding.buttons[2]) == 1 && canMove) {
-                                    //settingsBtn, should navigate to calibrateBtn
+                                    //quitBtn, should navigate to calibrateBtn
                                     index = 1;
                                     selectObject();
                                     StartCoroutine(moveWait());
@@ -159,7 +147,7 @@ public class menuNavigation : MonoBehaviour {
                                 break;
                             case 1:
                                 if (managerMain.GetAxis(keyBinding.buttons[2]) == -1 && canMove) {
-                                    //calibrateBtn, should navigate to settingsBtn
+                                    //calibrateBtn, should navigate to quitBtn
                                     index = 0;
                                     selectObject();
                                     StartCoroutine(moveWait());
@@ -171,46 +159,32 @@ public class menuNavigation : MonoBehaviour {
                         switch (index) {
                             case 0:
                                 if (GetAxisKeys(false) < 0) {
-                                    //settingsBtn, should navigate to calibrateBtn
+                                    //quitBtn, should navigate to calibrateBtn
                                     index = 1;
                                     selectObject();
                                 }
                                 break;
                             case 1:
                                 if (GetAxisKeys(false) > 0) {
-                                    //calibrateBtn, should navigate to settingsBtn
+                                    //calibrateBtn, should navigate to quitBtn
                                     index = 0;
                                     selectObject();
                                 }
                                 break;
                         }
                     }
-                }
-                else {
-                    if (managerMain.currentInput.isXbox) {
-
-                    }
-                    else {
-
-                    }
-                }
             }
         }
 	}
 
     void selectObject() {
-        if (index == -1) {
-            //modify secondaryIndex colors
-
-        }
-        if (secondaryIndex == -1) {
             //modify index colors
             ColorBlock colors;
             switch(index) {
-                case 0:             //settings
-                    colors = settingsBtn.colors;
+                case 0:             //quit
+                    colors = quitBtn.colors;
                     colors.normalColor = SelectColor;
-                    settingsBtn.colors = colors;
+                quitBtn.colors = colors;
                     colors = playBtn.colors;
                     colors.normalColor = (Color)colorTable["playBtn"];
                     playBtn.colors = colors;
@@ -224,10 +198,10 @@ public class menuNavigation : MonoBehaviour {
                     calibrateBtn.colors = colors;
                     colors = playBtn.colors;
                     colors.normalColor = (Color)colorTable["playBtn"];
-                    settingsBtn.colors = colors;
-                    colors = settingsBtn.colors;
-                    colors.normalColor = (Color)colorTable["settingsBtn"];
-                    settingsBtn.colors = colors;
+                quitBtn.colors = colors;
+                    colors = quitBtn.colors;
+                    colors.normalColor = (Color)colorTable["quitBtn"];
+                quitBtn.colors = colors;
                     break;
                 case 2:             //play
                     colors = playBtn.colors;
@@ -236,12 +210,11 @@ public class menuNavigation : MonoBehaviour {
                     colors = calibrateBtn.colors;
                     colors.normalColor = (Color)colorTable["calibrateBtn"];
                     calibrateBtn.colors = colors;
-                    colors = settingsBtn.colors;
-                    colors.normalColor = (Color)colorTable["settingsBtn"];
-                    settingsBtn.colors = colors;
+                    colors = quitBtn.colors;
+                    colors.normalColor = (Color)colorTable["quitBtn"];
+                quitBtn.colors = colors;
                     break;
             }
-        }
     }
     float GetAxisKeys(bool isVertical)
     {

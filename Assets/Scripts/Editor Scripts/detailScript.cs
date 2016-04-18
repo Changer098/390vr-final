@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
+#if UNITY_EDITOR
+    using UnityEditor;
 
 public class detailScript : MonoBehaviour {
     //Just an editor script that explains what a game object does/why it's there
@@ -23,3 +24,4 @@ public class detailScriptEditor : Editor {
         ds.comments = EditorGUILayout.TextArea(ds.comments, GUILayout.Height(100));
     }
 }
+#endif
