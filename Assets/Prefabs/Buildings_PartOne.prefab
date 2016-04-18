@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 432136}
   - 33: {fileID: 3378436}
   - 23: {fileID: 2305842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Elliot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 412358}
   - 33: {fileID: 3315104}
   - 23: {fileID: 2394352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wiley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 442600}
   - 33: {fileID: 3356334}
   - 23: {fileID: 2359582}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Owen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 483918}
   - 33: {fileID: 3308636}
   - 23: {fileID: 2363720}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Earhart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 4: {fileID: 431632}
   - 33: {fileID: 3361230}
   - 23: {fileID: 2338772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tarkington
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 410124}
   - 33: {fileID: 3383436}
   - 23: {fileID: 2350946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 4: {fileID: 467488}
   - 33: {fileID: 3380460}
   - 23: {fileID: 2327904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Third Street Suites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 4: {fileID: 483254}
   - 33: {fileID: 3365494}
   - 23: {fileID: 2315600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armstrong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490572}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Meredith
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Buildings_PartOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - 4: {fileID: 451998}
   - 33: {fileID: 3320098}
   - 23: {fileID: 2362106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Krach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,10 @@ GameObject:
   - 4: {fileID: 433318}
   - 33: {fileID: 3356940}
   - 23: {fileID: 2330724}
-  m_Layer: 0
+  - 65: {fileID: 6562256}
+  - 65: {fileID: 6562540}
+  - 65: {fileID: 6526722}
+  m_Layer: 10
   m_Name: Harrison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +213,7 @@ GameObject:
   - 4: {fileID: 499658}
   - 33: {fileID: 3384280}
   - 23: {fileID: 2326364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: McCutcheon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +230,7 @@ GameObject:
   - 4: {fileID: 408988}
   - 33: {fileID: 3378524}
   - 23: {fileID: 2353540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shreve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +247,7 @@ GameObject:
   - 4: {fileID: 409722}
   - 33: {fileID: 3347560}
   - 23: {fileID: 2327796}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,8 +381,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4406497, y: 7.928005, z: -8.905643}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 420, y: 24, z: 364.7}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 433318}
   - {fileID: 432136}
@@ -874,6 +877,42 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175874}
   m_Mesh: {fileID: 4300000, guid: e4fda128a4dc3d44cbecbb4bd56049b0, type: 3}
+--- !u!65 &6526722
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.080000035, z: -0.035}
+  m_Center: {x: 0.04, y: 0.009999998, z: 0.015}
+--- !u!65 &6562256
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0.06, y: 0.04, z: -0.02}
+  m_Center: {x: -0.0000000022994047, y: 0.009999998, z: 0.01}
+--- !u!65 &6562540
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.080000035, z: -0.035}
+  m_Center: {x: -0.04, y: 0.009999998, z: 0.015}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

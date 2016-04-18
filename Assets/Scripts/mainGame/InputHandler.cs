@@ -112,6 +112,9 @@ public class InputHandler : MonoBehaviour {
                 //do move UFO
                 ufoHandler.updatePosition(managerMain.GetAxis(LeftUp), managerMain.GetAxis(LeftSide));
             }
+            if (managerMain.GetKeyDown(ABtn)) {
+                //fire mechanism
+            }
         }
     }
 

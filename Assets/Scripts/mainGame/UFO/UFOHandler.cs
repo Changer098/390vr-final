@@ -5,19 +5,24 @@ public class UFOHandler : MonoBehaviour {
 
     // Use this for initialization
     public Camera OVRCamera;
+    public Vector3 angleRotation;
     public float forceLeft;
     public float forceUp;
     bool canMove = false;
     Rigidbody rigid;
+    public GameObject hitTarget;
+
+    private GameObject instantiatedTarget;
 	void Start () {
         rigid = GetComponent<Rigidbody>();
         StartCoroutine(holdPosition());
 	}
     void FixedUpdate() {
         //gameObject.transform.rotation = OVRCamera.transform.rotation;
-        Vector3 angleRotation = gameObject.transform.rotation.eulerAngles;
+        angleRotation = gameObject.transform.rotation.eulerAngles;
         angleRotation.y = OVRCamera.transform.rotation.eulerAngles.y;
-        gameObject.transform.rotation.eulerAngles.Set(angleRotation.x, angleRotation.y, angleRotation.z);
+        //gameObject.transform.rotation.eulerAngles.Set(angleRotation.x, angleRotation.y, angleRotation.z);
+        //gameObject.transform.rotation = Quaternion.Euler(angleRotation);
         //apply force to maintain UFO position
         rigid.AddForce(Vector3.up * rigid.mass * 9.81f);
     }
@@ -45,8 +50,24 @@ public class UFOHandler : MonoBehaviour {
         //debug variables
         forceLeft = dampenedLeft;
         forceUp = dampenedUp;
-        rigid.AddForce(gameObject.transform.forward * dampenedUp);
-        rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft);
+        //rigid.AddForce(gameObject.transform.forward * dampenedUp);
+        //rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft);
+
+        Ray rayfire = new Ray(OVRCamera.transform.position, OVRCamera.transform.forward);
+        RaycastHit rayHit;
+        //10000000011 in base 10
+        int mask = 1027;
+        if (Physics.Raycast(rayfire, out rayHit, 15, mask, QueryTriggerInteraction.Ignore)) {
+            if (rayHit.collider.gameObject.layer == 8) {
+                Debug.Log("Hit UFO");
+            }
+            if (hitTarget == null) {
+                Instantiate(hitTarget, rayHit.point, Quaternion.identity);
+            }
+            else {
+                hitTarget.transform.position = rayHit.point;
+            }
+        }
     }
     public bool canMoveUFO() {
         //do checks if intro animation has completed

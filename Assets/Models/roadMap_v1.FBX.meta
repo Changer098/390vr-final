@@ -14,6 +14,7 @@ ModelImporter:
     2300000: RoadMap_001
     3300000: RoadMap_001
     4300000: RoadMap_001
+    6400000: RoadMap_001
   materials:
     importMaterials: 1
     materialName: 0
@@ -40,7 +41,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 10
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
