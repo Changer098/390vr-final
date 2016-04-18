@@ -16,7 +16,7 @@ public class HUDInfo : MonoBehaviour {
     }
     public static ArrayList buttonList = new ArrayList(6);
     //single Key method for adding a button
-	public static void AddButton(XboxKey key, string weaponName, float refreshTime, int ammo) {
+    public static void AddButton(XboxKey key, string weaponName, float refreshTime, int ammo) {
         //this method assumes the caller knows what they're doing
         //will add duplicates
         GameObject temp = Instantiate(btnTemplate);
@@ -36,6 +36,7 @@ public class HUDInfo : MonoBehaviour {
         else posY = startPosition.y - (paddingY * buttonList.Count) - (Rtransform.rect.height * buttonList.Count);
         Debug.Log("posY: " + posY);
         anchored.y = posY;
+        anchored.x = startPosition.x;
         newTransform.anchoredPosition = anchored;
 
         //Set btnData and add it to the list
@@ -68,6 +69,7 @@ public class HUDInfo : MonoBehaviour {
             if (tmp.key[0] == key) {
                 tmp.ammo = ammo;
                 buttonList[i] = tmp;
+                callUpdateAmmoAmount(i, ammo);
                 return tmp.ammo;
             }
         }
@@ -89,10 +91,16 @@ public class HUDInfo : MonoBehaviour {
             if (tmp.key[0] == key) {
                 tmp.ammo = tmp.fullAmmo;
                 buttonList[i] = tmp;
+                callUpdateAmmoAmount(i, tmp.fullAmmo);
                 return tmp.ammo;
             }
         }
         return -1;
+    }
+    public static void callUpdateAmmoAmount(int index, int ammount) {
+        UIbutton tmp = (UIbutton)buttonList[index];
+        buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
+        dets.updateAmmoAmmount(ammount);
     }
     public static void callReload(XboxKey key) {
         Debug.Log("Reloading!");

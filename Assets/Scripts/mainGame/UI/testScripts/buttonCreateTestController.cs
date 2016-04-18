@@ -1,7 +1,71 @@
 ﻿using UnityEngine;
+using PurdueVR.InputManager;
 using System.Collections;
 
-public class buttonCreateTest : MonoBehaviour {
+public class buttonCreateTestController : MonoBehaviour {
+
+    public bool Amade = false;
+    public bool Bmade = false;
+    public bool Xmade = false;
+    public bool Ymade = false;
+
+    InputKey ABtn = new InputKey("A Btn", KeyCode.A, XboxKey.A);
+    InputKey BBtn = new InputKey("B Btn", KeyCode.B, XboxKey.B);
+    InputKey XBtn = new InputKey("X Btn", KeyCode.X, XboxKey.X);
+    InputKey YBtn = new InputKey("Y Btn", KeyCode.Y, XboxKey.Y);
+    void Start() {
+        //11 elements in list
+        //Select - Xbox.A_buttons[0]
+        keyBinding.addButton(new InputKey("B Btn", KeyCode.B, XboxKey.B));  //buttons[11]
+        keyBinding.addButton(new InputKey("Y Btn", KeyCode.Y, XboxKey.Y));  //buttons[12]
+        keyBinding.addButton(new InputKey("X Btn", KeyCode.X, XboxKey.X));  //buttons[13]
+    }
+    void Update() {
+        if (managerMain.GetKeyDown(ABtn)) {
+            // A Btn
+            Debug.Log("Pressed A");
+            if (!Amade) {
+                createABtn();
+                Amade = true;
+            }
+            else {
+                fireA();
+            }
+        }
+        if (managerMain.GetKeyDown(BBtn)) {
+            Debug.Log("Pressed B");
+            //B Btn
+            if (!Bmade) {
+                createBBtn();
+                Bmade = true;
+            }
+            else {
+                fireB();
+            }
+        }
+        if (managerMain.GetKeyDown(XBtn)) {
+            Debug.Log("Pressed X");
+            //X Btn
+            if (!Xmade) {
+                createXBtn();
+                Xmade = true;
+            }
+            else {
+                fireX();
+            }
+        }
+        if (managerMain.GetKeyDown(YBtn)) {
+            Debug.Log("Pressed Y");
+            //Y Btn
+            if (!Ymade) {
+                createYBtn();
+                Ymade = true;
+            }
+            else {
+                fireY();
+            }
+        }
+    }
 
     public void createABtn() {
         HUDInfo.AddButton(XboxKey.A, "testWeapn", 1, 5);

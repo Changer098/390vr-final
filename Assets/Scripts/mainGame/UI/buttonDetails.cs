@@ -4,26 +4,33 @@ using System.Collections;
 
 public class buttonDetails : MonoBehaviour {
 
-    [SerializeField]private int ButtonCount = 1;
-    [SerializeField]private string weaponName = "";
-    [SerializeField]private float refreshTime = 1.0f;
-    [SerializeField]private GameObject progressRing;
-    [SerializeField]private int ammo = 1;
+    [SerializeField]
+    private int ButtonCount = 1;
+    [SerializeField]
+    private string weaponName = "";
+    [SerializeField]
+    private float refreshTime = 1.0f;
+    [SerializeField]
+    private GameObject progressRing;
+    [SerializeField]
+    private int ammo = 1;
+    private int currAmmo = 0;
+    private Image progressImage;
     XboxKey key;
     private imagesDB imagesDB;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         GameObject HUD = GameObject.Find("HUD");
         if (HUD == null) {
             Debug.Log("buttonDetails: Unable to find HUD");
         }
         else imagesDB = HUD.GetComponent<imagesDB>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
     public GameObject Create(XboxKey key, RectTransform transform) {
         ButtonCount = 1;
         RectTransform original = GetComponent<RectTransform>();
@@ -75,12 +82,29 @@ public class buttonDetails : MonoBehaviour {
         this.refreshTime = refreshTime;
         this.ammo = ammo;
         name = weaponName;
+        currAmmo = ammo;
+        progressImage = progressRing.GetComponent<Image>();
     }
     public void reload() {
         StartCoroutine(reloadRoutine());
     }
     IEnumerator reloadRoutine() {
-        yield return new WaitForEndOfFrame();
+        Color original = GetComponent<Image>().color;
+        Color faded = new Color(original.r, original.g, original.b, 0.5f);
+        GetComponent<Image>().color = faded;
+        float currProgress = progressImage.fillAmount;
+        float addAmmount = refreshTime * 0.05f;
+        Debug.Log("reloadRoutine(): addAmount = " + addAmmount);
+        while (progressImage.fillAmount < 1) {
+            progressImage.fillAmount = progressImage.fillAmount + addAmmount;
+            yield return new WaitForSeconds(0.05f);
+        }
         HUDInfo.resetAmmo(key);
+        GetComponent<Image>().color = original;
+    }
+    public void updateAmmoAmmount(int currAmmo) {
+        this.currAmmo = currAmmo;
+        float progress = (float)currAmmo / (float)ammo;
+        progressImage.fillAmount = progress;
     }
 }

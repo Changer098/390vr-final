@@ -12,7 +12,7 @@ public class CamerasSwitcher : MonoBehaviour {
         transferObjects tObject = TransferObjects.GetComponent<transferObjects>();
         GameObject otherCamera = tObject.getCamera();
         Destroy(otherCamera);
-        tObject.Destroy();
+        //tObject.Destroy();
         Debug.Log("Switched Cameras successfully");
 	}
 }

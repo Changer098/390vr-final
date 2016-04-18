@@ -366,7 +366,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1643,7 +1642,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1672,44 +1670,84 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 295.21362
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalPosition.y
       value: 156.95993
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalPosition.z
       value: 71.594635
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 464412, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+    - target: {fileID: 415942, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 437915983}
+    - target: {fileID: 0}
+      propertyPath: settingsCanvas
+      value: 
+      objectReference: {fileID: 1768660370}
+    - target: {fileID: 0}
+      propertyPath: playBtn
+      value: 
+      objectReference: {fileID: 804121404}
+    - target: {fileID: 0}
+      propertyPath: settingsBtn
+      value: 
+      objectReference: {fileID: 2140160005}
+    - target: {fileID: 0}
+      propertyPath: calibrateBtn
+      value: 
+      objectReference: {fileID: 444882308}
+    - target: {fileID: 0}
+      propertyPath: backBtn
+      value: 
+      objectReference: {fileID: 876487948}
+    - target: {fileID: 0}
+      propertyPath: controllerToggle
+      value: 
+      objectReference: {fileID: 428308463}
+    - target: {fileID: 0}
+      propertyPath: VRToggle
+      value: 
+      objectReference: {fileID: 1138358309}
+    - target: {fileID: 0}
+      propertyPath: pureBlackObject
+      value: 
+      objectReference: {fileID: 663710586}
+    - target: {fileID: 0}
+      propertyPath: OVRCameraRig
+      value: 
+      objectReference: {fileID: 1941949124}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1903204621 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 141298, guid: 8172fc734691c2343977fd4feb58003d, type: 2}
+  m_PrefabParentObject: {fileID: 105750, guid: 38f0f93f30a7b364d87b48d7ccd4caa6, type: 2}
   m_PrefabInternal: {fileID: 1903204620}
 --- !u!114 &1903204622
 MonoBehaviour:
@@ -1730,7 +1768,7 @@ MonoBehaviour:
   backBtn: {fileID: 876487948}
   controllerToggle: {fileID: 428308463}
   VRToggle: {fileID: 1138358309}
-  SelectColor: {r: 0.3897059, g: 1, b: 0.6717039, a: 1}
+  SelectColor: {r: 0.022058845, g: 1, b: 0.2716023, a: 0.716}
   pureBlackObject: {fileID: 663710586}
   OVRCameraRig: {fileID: 1941949124}
 --- !u!1 &1941949124 stripped

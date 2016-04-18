@@ -57,7 +57,7 @@ public class menuNavigation : MonoBehaviour {
                     switch (index) {
                         case 0:
                             //settingsBtn
-
+                            Debug.Log("Pressed Settings Btn");
                             break;
                         case 1:
                             //calibrateBtn
@@ -331,6 +331,10 @@ public class menuNavigation : MonoBehaviour {
         Debug.Log("screenFade finished");
         //loader will not actually finish and that's fine, so we just set it automatically activate.
         loader.allowSceneActivation = true;
+        /*if (fromMainGame.isFromMainGame) {
+            Debug.Log("Attempting to set active scene");
+            SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+        }*/
         Debug.Log("load progress: " + loader.progress);
     }
 
