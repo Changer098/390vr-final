@@ -11,6 +11,7 @@ public class moveCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = cameraPos.transform.position;
+        if (moveCamera.isAlive) transform.position = cameraPos.transform.position;
 	}
+    public static bool isAlive = true;
 }

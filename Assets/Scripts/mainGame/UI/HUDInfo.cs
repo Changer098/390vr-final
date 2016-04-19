@@ -7,14 +7,39 @@ public class HUDInfo : MonoBehaviour {
     public static GameObject HUDCanvas;
     public static GameObject btnTemplate;
     private struct UIbutton {
-        public XboxKey[] key;
+        public XboxKey key;
         public int keyCount;
         public GameObject Gamebutton;
         public int ammo;
         public int fullAmmo;            //the full capacity of the ammo
         public bool isAble;
     }
+    private struct UITrigger {
+        public XboxAxis axis;
+        public GameObject Gamebutton;
+        public int ammo;
+        public int fullAmmo;            //the full capacity of the ammo
+        public bool isAble;
+    }
+    public static void addTriggers() {
+        AddTrigger(XboxAxis.RightTrigger, "laserFire", 1f, 50, HUDCanvas.transform.Find("Right Trigger").gameObject);
+        AddTrigger(XboxAxis.LeftTrigger, "abduct", 0.5f, 300, HUDCanvas.transform.Find("Left Trigger").gameObject);
+    }
     public static ArrayList buttonList = new ArrayList(6);
+
+    public static void AddTrigger(XboxAxis axis, string weaponName, float refreshTime, int ammo, GameObject gameObj) {
+        //Set btnData and add it to the list
+        UITrigger btnData;
+        btnData.axis = axis;
+        btnData.Gamebutton = gameObj;
+        btnData.ammo = ammo;
+        btnData.isAble = true;
+        btnData.fullAmmo = ammo;
+        buttonList.Add(btnData);
+        gameObj.GetComponent<buttonDetails>().updateInfo(weaponName, refreshTime, ammo, false);
+        gameObj.GetComponent<buttonDetails>().updateAxis(axis);
+        Debug.Log("Added Trigger");
+    }
     //single Key method for adding a button
     public static void AddButton(XboxKey key, string weaponName, float refreshTime, int ammo) {
         //this method assumes the caller knows what they're doing
@@ -24,7 +49,7 @@ public class HUDInfo : MonoBehaviour {
         buttonDetails dets = temp.GetComponent<buttonDetails>();
         RectTransform Rtransform = btnTemplate.GetComponent<RectTransform>();
 
-        dets.updateInfo(weaponName, refreshTime, ammo);
+        dets.updateInfo(weaponName, refreshTime, ammo, true);
         GameObject button = dets.Create(key, Rtransform);
         //change position by size and add padding
         RectTransform newTransform = button.GetComponent<RectTransform>();
@@ -41,8 +66,7 @@ public class HUDInfo : MonoBehaviour {
 
         //Set btnData and add it to the list
         UIbutton btnData;
-        btnData.key = new XboxKey[1];
-        btnData.key[0] = key;
+        btnData.key = key;
         btnData.keyCount = 1;
         btnData.Gamebutton = button;
         btnData.ammo = ammo;
@@ -51,63 +75,143 @@ public class HUDInfo : MonoBehaviour {
         buttonList.Add(btnData);
     }
 
-    //Overloaded method for creating one with multiple buttons 
-    public static void AddButton(XboxKey[] key, int keyCount, string weaponName, float refreshTime) {
-
-    }
     public static bool getAble(XboxKey key) {
-        foreach (UIbutton btn in buttonList) {
-            if (btn.key[0] == key) {
-                return btn.isAble;
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UIbutton) {
+                UIbutton tmp = (UIbutton)buttonList[i];
+                if (tmp.key == key)
+                    return tmp.isAble;
             }
         }
         return false;
     }
+    public static bool getAble(XboxAxis axis) {
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UITrigger) {
+                UITrigger tmp = (UITrigger)buttonList[i];
+                if (tmp.axis == axis) 
+                    return tmp.isAble;
+                }
+            }
+        return false;
+    }
     public static int setAmmo(XboxKey key, int ammo) {
         for (int i = 0; i < buttonList.Count; i++) {
-            UIbutton tmp = (UIbutton)buttonList[i];
-            if (tmp.key[0] == key) {
-                tmp.ammo = ammo;
-                buttonList[i] = tmp;
-                callUpdateAmmoAmount(i, ammo);
-                return tmp.ammo;
+            if (buttonList[i] is UIbutton) {
+                UIbutton tmp = (UIbutton)buttonList[i];
+                if (tmp.key == key) {
+                    tmp.ammo = ammo;
+                    buttonList[i] = tmp;
+                    callUpdateAmmoAmount(i, ammo);
+                    return tmp.ammo;
+                }
+            }            
+        }
+        return -1;
+    }
+    public static int setAmmo(XboxAxis axis, int ammo) {
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UITrigger) {
+                UITrigger tmp = (UITrigger)buttonList[i];
+                if (tmp.axis == axis) {
+                    tmp.ammo = ammo;
+                    buttonList[i] = tmp;
+                    callUpdateAmmoAmount(i, ammo);
+                    return tmp.ammo;
+                }
             }
         }
         return -1;
     }
     public static int getAmmo(XboxKey key) {
         for (int i = 0; i < buttonList.Count; i++) {
-            UIbutton tmp = (UIbutton)buttonList[i];
-            if (tmp.key[0] == key) {
-                return tmp.ammo;
-            }
+            if (buttonList[i] is UIbutton) {
+                UIbutton tmp = (UIbutton)buttonList[i];
+                if (tmp.key == key) {
+                    return tmp.ammo;
+                }
+            }           
+        }
+        return -1;
+    }
+    public static int getAmmo(XboxAxis axis) {
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UITrigger) {
+                UITrigger tmp = (UITrigger)buttonList[i];
+                if (tmp.axis == axis) {
+                    return tmp.ammo;
+                }
+            }           
         }
         return -1;
     }
 
     public static int resetAmmo(XboxKey key) {
         for (int i = 0; i < buttonList.Count; i++) {
-            UIbutton tmp = (UIbutton)buttonList[i];
-            if (tmp.key[0] == key) {
-                tmp.ammo = tmp.fullAmmo;
-                buttonList[i] = tmp;
-                callUpdateAmmoAmount(i, tmp.fullAmmo);
-                return tmp.ammo;
-            }
+            if (buttonList[i] is UIbutton) {
+                UIbutton tmp = (UIbutton)buttonList[i];
+                if (tmp.key == key) {
+                    tmp.ammo = tmp.fullAmmo;
+                    buttonList[i] = tmp;
+                    callUpdateAmmoAmount(i, tmp.fullAmmo);
+                    return tmp.ammo;
+                }
+            }          
+        }
+        return -1;
+    }
+    public static int resetAmmo(XboxAxis axis) {
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UITrigger) {
+                Debug.Log("iterating");
+                UITrigger tmp = (UITrigger)buttonList[i];
+                if (tmp.axis == axis) {
+                    tmp.ammo = tmp.fullAmmo;
+                    buttonList[i] = tmp;
+                    callUpdateAmmoAmount(i, tmp.fullAmmo);
+                    Debug.Log("reset ammo with " + tmp.ammo);
+                    return tmp.ammo;
+                }
+                else Debug.Log("tmp : " + tmp.axis.ToString() + "requested: " + axis.ToString());
+            }       
         }
         return -1;
     }
     public static void callUpdateAmmoAmount(int index, int ammount) {
-        UIbutton tmp = (UIbutton)buttonList[index];
-        buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
-        dets.updateAmmoAmmount(ammount);
+        if (buttonList[index] is UIbutton) {
+            UIbutton tmp = (UIbutton)buttonList[index];
+            buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
+            dets.updateAmmoAmmount(ammount);
+        }
+        else if (buttonList[index] is UITrigger) {
+            UITrigger tmp = (UITrigger)buttonList[index];
+            buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
+            dets.updateAmmoAmmount(ammount);
+        }
     }
     public static void callReload(XboxKey key) {
         Debug.Log("Reloading!");
-        foreach (UIbutton btn in buttonList) {
-            if (btn.key[0] == key) {
-                buttonDetails dets = btn.Gamebutton.GetComponent<buttonDetails>();
-                dets.reload();
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UIbutton) {
+                UIbutton tmp = (UIbutton)buttonList[i];
+                if (tmp.key == key) {
+                    buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
+                    dets.reload();
+                    break;
+                }
+            }
+        }
+    }
+    public static void callReload(XboxAxis axis) {
+        Debug.Log("Reloading!");
+        for (int i = 0; i < buttonList.Count; i++) {
+            if (buttonList[i] is UITrigger) {
+                UITrigger tmp = (UITrigger)buttonList[i];
+                if (tmp.axis == axis) {
+                    buttonDetails dets = tmp.Gamebutton.GetComponent<buttonDetails>();
+                    dets.reload();
+                    break;
+                }
             }
         }
     }

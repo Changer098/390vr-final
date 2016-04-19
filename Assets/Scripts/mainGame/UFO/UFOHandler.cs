@@ -8,14 +8,22 @@ public class UFOHandler : MonoBehaviour {
     public Vector3 angleRotation;
     public float forceLeft;
     public float forceUp;
+    public float multiplier = 2.5f;
+    public float addedForceHeight = 0;
     bool canMove = false;
     Rigidbody rigid;
     public GameObject hitTarget;
+    public GameObject abductRays;
 
     private GameObject instantiatedTarget;
+
+    //Abduct Rays values
+    private bool keepAbductAlive = false;
 	void Start () {
+        moveCamera.isAlive = true;
         rigid = GetComponent<Rigidbody>();
         StartCoroutine(holdPosition());
+        StartCoroutine(abducter());
 	}
     void FixedUpdate() {
         //gameObject.transform.rotation = OVRCamera.transform.rotation;
@@ -27,10 +35,10 @@ public class UFOHandler : MonoBehaviour {
         rigid.AddForce(Vector3.up * rigid.mass * 9.81f);
     }
 	
-	public void updatePosition(float thumbUp, float thumbLeft) {
+	public void updatePosition(float thumbUp, float thumbLeft, float leftThumbVertical) {
         //thumbUp is the Left Thumbstick Vertical, thumbLeft is Left Thumbstick Horizontal
         //handle dampening of input variables
-        float dampenedUp = 0, dampenedLeft = 0, threshold = 0.1f;
+        float dampenedUp = 0, dampenedLeft = 0, dampenedUpLeft = 0, threshold = 0.1f;
         if (thumbUp > 0) {
             if (thumbUp < threshold) dampenedUp = 0;
             else dampenedUp = thumbUp;
@@ -47,12 +55,25 @@ public class UFOHandler : MonoBehaviour {
             if (thumbLeft > (-1 * threshold)) dampenedLeft = 0;
             else dampenedLeft = thumbLeft;
         }
+        if (leftThumbVertical > 0) {
+            if (leftThumbVertical < threshold) dampenedUpLeft = 0;
+            else dampenedUpLeft = leftThumbVertical;
+        }
+        else if (leftThumbVertical < 0) {
+            if (leftThumbVertical > (-1 * threshold)) dampenedUpLeft = 0;
+            else dampenedUpLeft = leftThumbVertical;
+        }
         //debug variables
         forceLeft = dampenedLeft;
         forceUp = dampenedUp;
-        //rigid.AddForce(gameObject.transform.forward * dampenedUp);
-        //rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft);
+        addedForceHeight = dampenedUpLeft;
+        rigid.AddForce(gameObject.transform.forward * -1 * dampenedUp * multiplier);
+        rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft * multiplier);
 
+        //Add Vertical force
+        rigid.AddForce(Vector3.up * rigid.mass * dampenedUpLeft);
+
+        //Cast Target Object
         Ray rayfire = new Ray(OVRCamera.transform.position, OVRCamera.transform.forward);
         RaycastHit rayHit;
         //10000000011 in base 10
@@ -73,6 +94,10 @@ public class UFOHandler : MonoBehaviour {
         //do checks if intro animation has completed
         return canMove;
     }
+    public void destroyUFO() {
+        //handle destruction of UFO
+        moveCamera.isAlive = false;
+    }
     //hold the position while axis values reset
     IEnumerator holdPosition() {
         Vector3 position = rigid.position;
@@ -83,5 +108,92 @@ public class UFOHandler : MonoBehaviour {
         }
         canMove = true;
         Debug.Log("rigidBody is free");
+    }
+    public void fireA() {
+        if (HUDInfo.getAble(XboxKey.A)) {
+            Debug.Log("Firing A!");
+            int ammoCount = HUDInfo.getAmmo(XboxKey.A);
+            if (ammoCount > 0) {
+                Debug.Log("Ammo: " + ammoCount);
+                ammoCount = ammoCount - 1;
+                Debug.Log("setAmmo(): " + HUDInfo.setAmmo(XboxKey.A, ammoCount));
+                if (HUDInfo.getAmmo(XboxKey.A) == 0) {
+                    HUDInfo.callReload(XboxKey.A);
+                }
+            }
+            else {
+                Debug.Log("Cannot fire, getAmmo <= 0");
+            }
+        }
+    }
+    public void fireB() {
+
+    }
+    public void fireX() {
+
+    }
+    public void fireY() {
+
+    }
+    public void rightTrigger() {
+        if (HUDInfo.getAble(XboxAxis.RightTrigger)) {
+            Debug.Log("Firing Right Trigger!");
+            int ammoCount = HUDInfo.getAmmo(XboxAxis.RightTrigger);
+            
+            if (ammoCount > 0) {
+                Debug.Log("Ammo: " + ammoCount);
+                ammoCount = HUDInfo.setAmmo(XboxAxis.RightTrigger, ammoCount - 1);
+                Debug.Log("setAmmo(): " + ammoCount);
+                //Do fire
+
+
+                if (HUDInfo.getAmmo(XboxAxis.RightTrigger) == 0) {
+                    HUDInfo.callReload(XboxAxis.RightTrigger);
+                }
+            }
+            else {
+                Debug.Log("Cannot fire, getAmmo <= 0, is " + ammoCount);
+            }
+        }
+    }
+    public void leftTrigger() {
+        if (HUDInfo.getAble(XboxAxis.LeftTrigger)) {
+            Debug.Log("Firing LeftTrigger!");
+            int ammoCount = HUDInfo.getAmmo(XboxAxis.LeftTrigger);
+
+            if (ammoCount > 0) {
+                Debug.Log("Ammo: " + ammoCount);
+                ammoCount = HUDInfo.setAmmo(XboxAxis.LeftTrigger, ammoCount - 1);
+                Debug.Log("setAmmo(): " + ammoCount);
+                //Do fire
+                keepAbductAlive = true;
+
+                if (HUDInfo.getAmmo(XboxAxis.LeftTrigger) == 0) {
+                    HUDInfo.callReload(XboxAxis.LeftTrigger);
+                }
+            }
+            else {
+                Debug.Log("Cannot fire, getAmmo <= 0, is " + ammoCount);
+            }
+        }
+    }
+    IEnumerator abducter() {
+        bool justSet = false;
+        while (true) {
+            if (keepAbductAlive) {
+                abductRays.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+                keepAbductAlive = false;
+                justSet = true;
+            }
+            else if (!keepAbductAlive && !justSet) {
+                abductRays.SetActive(false);
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if (!keepAbductAlive && justSet) {
+                yield return new WaitForSeconds(0.25f);
+                justSet = false;
+            }
+        }
     }
 }

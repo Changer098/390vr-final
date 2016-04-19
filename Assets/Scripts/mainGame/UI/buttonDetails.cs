@@ -14,10 +14,13 @@ public class buttonDetails : MonoBehaviour {
     private GameObject progressRing;
     [SerializeField]
     private int ammo = 1;
+    [SerializeField]
     private int currAmmo = 0;
     private Image progressImage;
     XboxKey key;
+    XboxAxis axis;
     private imagesDB imagesDB;
+    private bool isButton;
     // Use this for initialization
     void Start() {
         GameObject HUD = GameObject.Find("HUD");
@@ -77,13 +80,17 @@ public class buttonDetails : MonoBehaviour {
         Image image = GetComponent<Image>();
         original = transform;
     }
-    public void updateInfo(string weaponName, float refreshTime, int ammo) {
+    public void updateInfo(string weaponName, float refreshTime, int ammo, bool isButton) {
         this.weaponName = weaponName;
         this.refreshTime = refreshTime;
         this.ammo = ammo;
+        this.isButton = isButton;
         name = weaponName;
         currAmmo = ammo;
         progressImage = progressRing.GetComponent<Image>();
+    }
+    public void updateAxis(XboxAxis axis) {
+        this.axis = axis;
     }
     public void reload() {
         StartCoroutine(reloadRoutine());
@@ -99,8 +106,27 @@ public class buttonDetails : MonoBehaviour {
             progressImage.fillAmount = progressImage.fillAmount + addAmmount;
             yield return new WaitForSeconds(0.05f);
         }
-        HUDInfo.resetAmmo(key);
-        GetComponent<Image>().color = original;
+        if (isButton) {
+            int tmp = HUDInfo.resetAmmo(key);
+            if (tmp == -1) {
+                Debug.Log("reload(): unable to reset for button");
+            }
+            else {
+                Debug.Log("tmp = " + tmp);
+                GetComponent<Image>().color = original;
+            }
+        }
+        else {
+            int tmp = HUDInfo.resetAmmo(axis);
+            if (tmp == -1) {
+                Debug.Log("reload(): unable to reset for trigger");
+            }
+            else {
+                Debug.Log("tmp = " + tmp);
+                GetComponent<Image>().color = original;
+            }
+        }
+        //GetComponent<Image>().color = original;
     }
     public void updateAmmoAmmount(int currAmmo) {
         this.currAmmo = currAmmo;

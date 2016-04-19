@@ -34,6 +34,10 @@ public class InputHandler : MonoBehaviour {
 
     InputAxis LeftUp = new InputAxis("LeftUp", "Mouse Y", XboxAxis.LeftStickY);
     InputAxis LeftSide = new InputAxis("LeftSide", "Mouse X", XboxAxis.LeftStickX);
+    InputAxis RightUp = new InputAxis("RightUp", "", XboxAxis.RightStickY);
+
+    InputAxis LeftTrigger = new InputAxis("LeftTrigger", "", XboxAxis.LeftTrigger);
+    InputAxis RightTrigger = new InputAxis("RightTrigger", "", XboxAxis.RightTrigger);
     // Use this for initialization
     void Start() {
         SceneManager.UnloadScene(1);
@@ -41,6 +45,7 @@ public class InputHandler : MonoBehaviour {
         colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("returnBtn", returnBtn.colors.normalColor);
         ufoHandler = UFOobject.GetComponent<UFOHandler>();
+        HUDInfo.addTriggers();
     }
 
     // Update is called once per frame
@@ -110,10 +115,26 @@ public class InputHandler : MonoBehaviour {
             }
             if (ufoHandler.canMoveUFO()) {
                 //do move UFO
-                ufoHandler.updatePosition(managerMain.GetAxis(LeftUp), managerMain.GetAxis(LeftSide));
+                ufoHandler.updatePosition(managerMain.GetAxis(LeftUp), managerMain.GetAxis(LeftSide), managerMain.GetAxis(RightUp));
             }
             if (managerMain.GetKeyDown(ABtn)) {
                 //fire mechanism
+                ufoHandler.fireA();
+            }
+            if (managerMain.GetKeyDown(BBtn)) {
+                ufoHandler.fireB();
+            }
+            if (managerMain.GetKeyDown(XBtn)) {
+                ufoHandler.fireX();
+            }
+            if (managerMain.GetKeyDown(YBtn)) {
+                ufoHandler.fireY();
+            }
+            if (managerMain.GetAxis(LeftTrigger) > 0.5f) {
+                ufoHandler.leftTrigger();
+            }
+            if (managerMain.GetAxis(RightTrigger) > 0.5f) {
+                ufoHandler.rightTrigger();
             }
         }
     }
