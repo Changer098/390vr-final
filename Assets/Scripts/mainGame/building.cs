@@ -6,17 +6,16 @@ public class building : MonoBehaviour {
     public GameObject DM_prefab;
     private GameObject destructMesh;
     public int citizenCount;
+
+    int rightBulletHitCount = 0;
+    int weapon1HitCount = 0;
+    int weapon2HitCount = 0;
+    int weapon3HitCount = 0;
+    int weapon4HitCount = 0;
 	// Use this for initialization
 	void Start () {
         citizenCount = Random.Range(0, 200);
         StartCoroutine(generateColliders());
-        
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 
     IEnumerator generateColliders() {
@@ -38,5 +37,41 @@ public class building : MonoBehaviour {
             yield return null;
         }
         destructMesh.SetActive(false);
+    }
+
+    void OnCollisionEnter(Collision col) {
+        if (col.rigidbody.gameObject.name == gameObject.name) {
+            //colliding with ourselves, ignore
+            Debug.Log("Colliding with ourselves");
+        }
+        else {
+            //Colliding on impactable
+            if (col.gameObject.layer == 11) {
+                Debug.Log(gameObject.name + " collided with " + col.gameObject.name);
+                bullet bulletScript = col.gameObject.GetComponent<bullet>();
+                int bType = bulletScript.getType();
+                switch (bType) {
+                    case -1:
+                        //Left Trigger
+                        //do abducting shit
+                        break;
+                    case 0:
+                        //Right Trigger
+                        rightBulletHitCount++;
+                        if (rightBulletHitCount >= 5) {
+                            //do destruction
+                        }
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
+            }
+        }
     }
 }

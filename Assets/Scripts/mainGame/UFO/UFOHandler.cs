@@ -13,13 +13,20 @@ public class UFOHandler : MonoBehaviour {
     Rigidbody rigid;
     public GameObject hitTarget;
     public GameObject abductRays;
+    public GameObject bullet;
 
     private GameObject instantiatedTarget;
 
     bool unlockedA = false;
+    bool canFireA = true;
     bool unlockedB = false;
+    bool canFireB = true;
     bool unlockedX = false;
+    bool canFireX = true;
     bool unlockedY = false;
+    bool canFireY = true;
+
+    bool canFireRight = true;
 
     //Abduct Rays values
     private bool keepAbductAlive = false;
@@ -168,7 +175,7 @@ public class UFOHandler : MonoBehaviour {
         Debug.Log("rigidBody is free");
     }
     public void fireA() {
-        if (HUDInfo.getAble(XboxKey.A)) {
+        if (HUDInfo.getAble(XboxKey.A) && canFireA) {
             Debug.Log("Firing A!");
             int ammoCount = HUDInfo.getAmmo(XboxKey.A);
             if (ammoCount > 0) {
@@ -178,6 +185,7 @@ public class UFOHandler : MonoBehaviour {
                 if (HUDInfo.getAmmo(XboxKey.A) == 0) {
                     HUDInfo.callReload(XboxKey.A);
                 }
+                //StartCoroutine(waitA());
             }
             else {
                 Debug.Log("Cannot fire, getAmmo <= 0");
@@ -194,7 +202,7 @@ public class UFOHandler : MonoBehaviour {
 
     }
     public void rightTrigger() {
-        if (HUDInfo.getAble(XboxAxis.RightTrigger)) {
+        if (HUDInfo.getAble(XboxAxis.RightTrigger) && canFireRight) {
             Debug.Log("Firing Right Trigger!");
             int ammoCount = HUDInfo.getAmmo(XboxAxis.RightTrigger);
             
@@ -203,7 +211,7 @@ public class UFOHandler : MonoBehaviour {
                 ammoCount = HUDInfo.setAmmo(XboxAxis.RightTrigger, ammoCount - 1);
                 Debug.Log("setAmmo(): " + ammoCount);
                 //Do fire
-
+                StartCoroutine(waitRight());
 
                 if (HUDInfo.getAmmo(XboxAxis.RightTrigger) == 0) {
                     HUDInfo.callReload(XboxAxis.RightTrigger);
@@ -253,5 +261,20 @@ public class UFOHandler : MonoBehaviour {
                 justSet = false;
             }
         }
+    }
+
+    //wait a little bit so you don't waste all your ammo
+    IEnumerator waitRight() {
+        canFireRight = false;
+        float waitTime = 0.25f;
+        float start = Time.unscaledTime;
+        /*while (Time.unscaledTime < start + waitTime) {
+            yield return null;
+        }*/
+        int iterations = 10;
+        for (int i = 0; i < iterations; i++) {
+            yield return null;
+        }
+        canFireRight = true;
     }
 }
