@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HUDinterface : MonoBehaviour {
@@ -6,11 +7,17 @@ public class HUDinterface : MonoBehaviour {
     public float paddingY;
     public GameObject HUDCanvas;
     public GameObject btnTemplate;
+    public Image healthProgress;
+    public Image destructProgress;
+    public GameObject UFO;
     // Update is called once per frame
     void Start() {
         HUDInfo.startPosition = startPosition;
         HUDInfo.paddingY = paddingY;
         HUDInfo.HUDCanvas = HUDCanvas;
         HUDInfo.btnTemplate = btnTemplate;
+        HUDInfo.healthProgress = healthProgress;
+        HUDInfo.destructProgress = destructProgress;
+        HUDInfo.ufoHandler = UFO.GetComponent<UFOHandler>();
     }
 }

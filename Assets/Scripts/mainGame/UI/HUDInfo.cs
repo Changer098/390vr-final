@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HUDInfo : MonoBehaviour {
@@ -6,6 +7,12 @@ public class HUDInfo : MonoBehaviour {
     public static float paddingY;
     public static GameObject HUDCanvas;
     public static GameObject btnTemplate;
+    public static Image destructProgress;
+    public static Image healthProgress;
+    public static UFOHandler ufoHandler;
+
+    public static int destruction = 0;
+    public static float health = 1;
     private struct UIbutton {
         public XboxKey key;
         public int keyCount;
@@ -214,5 +221,43 @@ public class HUDInfo : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public static void UpdateDestruction(int damage) {
+        int upgradeAmount;
+        switch(ufoHandler.getUpgradeLevel()) {
+            case 1:
+                upgradeAmount = 100;
+                break;
+            case 2:
+                upgradeAmount = 1000;
+                break;
+            case 3:
+                upgradeAmount = 10000;
+                break;
+            case 4:
+                upgradeAmount = 50000;
+                break;
+            default:
+                upgradeAmount = 100000;
+                break;
+        }
+        destruction = destruction + damage;
+        float destructionProgAmnt = (float)destruction / (float)upgradeAmount;
+        if (ufoHandler.destructionUpdate(destructionProgAmnt)) {
+            destructProgress.fillAmount = 0;
+        }
+        else {
+            destructionProgAmnt = Mathf.Clamp(destructionProgAmnt, 0, 1);
+            destructProgress.fillAmount = destructionProgAmnt;
+        }
+    }
+    public static void UpdateHealth(float damage) {
+        health = health - damage;
+        health = Mathf.Clamp01(health);
+        if (ufoHandler.healthUpdate(health)) {
+
+        }
+        healthProgress.fillAmount = health;
     }
 }

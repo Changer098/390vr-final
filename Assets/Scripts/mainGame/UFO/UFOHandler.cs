@@ -9,13 +9,17 @@ public class UFOHandler : MonoBehaviour {
     public float forceLeft;
     public float forceUp;
     public float multiplier = 2.5f;
-    public float addedForceHeight = 0;
     bool canMove = false;
     Rigidbody rigid;
     public GameObject hitTarget;
     public GameObject abductRays;
 
     private GameObject instantiatedTarget;
+
+    bool unlockedA = false;
+    bool unlockedB = false;
+    bool unlockedX = false;
+    bool unlockedY = false;
 
     //Abduct Rays values
     private bool keepAbductAlive = false;
@@ -66,7 +70,6 @@ public class UFOHandler : MonoBehaviour {
         //debug variables
         forceLeft = dampenedLeft;
         forceUp = dampenedUp;
-        addedForceHeight = dampenedUpLeft;
         rigid.AddForce(gameObject.transform.forward * -1 * dampenedUp * multiplier);
         rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft * multiplier);
 
@@ -98,6 +101,61 @@ public class UFOHandler : MonoBehaviour {
         //handle destruction of UFO
         moveCamera.isAlive = false;
     }
+    public bool destructionUpdate(float value) {
+        //If destruction is enough for an upgrade, upgrade weapon and return true. Else return false
+        if (!unlockedA) {
+            if (value >= 1) {
+                unlockedA = true;
+                HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 20);
+                return true;
+            }
+            return false;
+        }
+        else if (!unlockedB) {
+            if (value >= 1) {
+                unlockedB = true;
+                HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 10);
+                return true;
+            }
+            return false;
+        }
+        else if (!unlockedX) {
+            if (value >= 1) {
+                unlockedX = true;
+                HUDInfo.AddButton(XboxKey.X, "weaponX", 0.75f, 1);
+                return true;
+            }
+            return false;
+        }
+        else if (!unlockedY) {
+            if (value >= 1) {
+                unlockedY = true;
+                HUDInfo.AddButton(XboxKey.Y, "weaponY", 0.75f, 5);
+                return true;
+            }
+            return false;
+        }
+        else {
+            //can't upgrade any more, everything is unlocked. return false
+            return false;
+        }
+    }
+    public bool healthUpdate(float value) {
+        //If health is 0, destroyUFO and return true. Else false
+        if (value <= 0) {
+            destroyUFO();
+            return true;
+        }
+        return false;
+    }
+    public int getUpgradeLevel() {
+        if (!unlockedA) return 1;
+        else if (!unlockedB) return 2;
+        else if (!unlockedX) return 3;
+        else if (!unlockedY) return 4;
+        else return 5;
+    }
+
     //hold the position while axis values reset
     IEnumerator holdPosition() {
         Vector3 position = rigid.position;
