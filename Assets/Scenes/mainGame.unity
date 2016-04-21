@@ -470,6 +470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1dbb0e3fcad90ad4a89fbf11bf0e07d7, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &45797398
 Prefab:
   m_ObjectHideFlags: 0
@@ -576,6 +578,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02235, y: 0.04, z: 0.013058336}
   m_Center: {x: -0.000058134145, y: -0.0000016859864, z: 0.006529172}
+--- !u!1 &49460715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 49460717}
+  - 114: {fileID: 49460716}
+  m_Layer: 0
+  m_Name: buildDestructGet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &49460716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 49460715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08721f3ddef899449b6009ed5bdd0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 2
+--- !u!4 &49460717
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 49460715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 203.5047, y: -3.5080795, z: 274.03937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1001 &57909651
 Prefab:
   m_ObjectHideFlags: 0
@@ -835,6 +878,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: f31b8de04630a8e47bef6d1e8b887267, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &76179719
 Prefab:
   m_ObjectHideFlags: 0
@@ -1064,6 +1109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 199240, guid: 1c7999b2ed13c324bbc689e45d59c6cf, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &113821177
 Prefab:
   m_ObjectHideFlags: 0
@@ -1205,7 +1252,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 125}
+  m_AnchoredPosition: {x: 10, y: 100}
   m_SizeDelta: {x: 405, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117515399
@@ -2059,6 +2106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 4b992e6670d86b74dbf8b98da1acdadd, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &181945867
 Prefab:
   m_ObjectHideFlags: 0
@@ -2867,6 +2916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &218213195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,6 +3134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 9307ab5a93acdc34aa45822565933354, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &221676698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,7 +3450,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: 5}
+  m_AnchoredPosition: {x: 22, y: -15}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239228980
@@ -4633,6 +4686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 68423df30e94aab4b851ade6d2d56417, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &365234420
 Prefab:
   m_ObjectHideFlags: 0
@@ -5220,6 +5275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 104572, guid: cc027d00c75d6174792c92001dbe23a7, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &427481690
 Prefab:
   m_ObjectHideFlags: 0
@@ -5555,6 +5612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 69b096017e3a7ac41ac0d783630c06c1, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &445410340 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 109010, guid: 300a98738e9322d4a91fd2e2ac15dbbf, type: 2}
@@ -5572,6 +5631,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 195466, guid: 1bbe186808e80c346941b4ce8533a46f, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &448186129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,7 +5861,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 0}
+  m_AnchoredPosition: {x: 125, y: -20}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449123817
@@ -5935,6 +5996,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: fb614611213d4fe4491d4bbb071d8a16, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &452873949
 GameObject:
   m_ObjectHideFlags: 0
@@ -6098,6 +6161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 158916, guid: 866e7a83d12343840ab1836e429e71fc, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &493849102
 Prefab:
   m_ObjectHideFlags: 0
@@ -6507,6 +6572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1d798e49c7a658d489a16956716b5acc, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &506656049
 Prefab:
   m_ObjectHideFlags: 0
@@ -6990,6 +7057,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: e10f45be64f680048bf303e5fd31f6d0, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &554108168
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,6 +7190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 44079428a42d59543b931236f0f4b4c1, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &557125634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,6 +7797,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &589140617
 GameObject:
   m_ObjectHideFlags: 0
@@ -7915,6 +7988,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &597710086
 Prefab:
   m_ObjectHideFlags: 0
@@ -8237,6 +8312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: e8e3a9b8fdd06ff4e9de56c430d2eab9, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &612767582
 Prefab:
   m_ObjectHideFlags: 0
@@ -8552,6 +8629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: a8cedd08e823eda40a3137bcc25660cb, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &635933981
 GameObject:
   m_ObjectHideFlags: 0
@@ -8561,7 +8640,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 635933982}
   - 65: {fileID: 635933983}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9039,6 +9118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 7ef32b1c72ba4d5498e61b9284a5eb8f, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &678928244
 Prefab:
   m_ObjectHideFlags: 0
@@ -9260,6 +9341,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
+--- !u!1 &693136877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 693136878}
+  m_Layer: 8
+  m_Name: fireLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &693136878
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 693136877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.362, z: -0.17}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 2123262259}
+  m_RootOrder: 3
 --- !u!1001 &707613316
 Prefab:
   m_ObjectHideFlags: 0
@@ -9674,6 +9784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &718550149
 Prefab:
   m_ObjectHideFlags: 0
@@ -9825,6 +9937,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 955ca12cfdf6b5c458e86f60f77aab1e, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &718576945
 Prefab:
   m_ObjectHideFlags: 0
@@ -10026,6 +10140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &721161875
 Prefab:
   m_ObjectHideFlags: 0
@@ -10302,6 +10418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 6858155f27550fd45bb98244bd96d4a5, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &732210933
 Prefab:
   m_ObjectHideFlags: 0
@@ -11312,7 +11430,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 828550462}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11352,6 +11470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 101466, guid: 3fb24761cb96fb94882515361c82184a, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &848778903
 Prefab:
   m_ObjectHideFlags: 0
@@ -12025,6 +12145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 189688, guid: f198196159b9a8243a35dad476004606, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &915975689
 Prefab:
   m_ObjectHideFlags: 0
@@ -12275,7 +12397,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -30}
+  m_AnchoredPosition: {x: 20, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939181431
@@ -12908,6 +13030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 6e63e3bdd6a83884ea2c49c60d87bdf9, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &990617079
 Prefab:
   m_ObjectHideFlags: 0
@@ -13341,6 +13465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 67b819e37e6293b4f85bf8bf5650ecb3, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1022739087
 GameObject:
   m_ObjectHideFlags: 0
@@ -13436,6 +13562,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 110566, guid: 0a8689b81cd41e347a8df2dc5d90ecf4, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1024767783 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 912eb840e176a9f4bb897f9fe06b35b8, type: 3}
@@ -13469,6 +13597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 154784, guid: d5bfab24757a48f48b3d04263e601a82, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1068539075
 Prefab:
   m_ObjectHideFlags: 0
@@ -13923,6 +14053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 01b4c70b074eeaa4ca3c9cfcacc2fa2c, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!20 &1107911294 stripped
 Camera:
   m_PrefabParentObject: {fileID: 2027358, guid: 922b85cadab7af2409da1e63365c7674,
@@ -14341,6 +14473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1142995670
 GameObject:
   m_ObjectHideFlags: 0
@@ -14977,6 +15111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 346f3452821b5984891afc2329e2d207, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1178407323
 Prefab:
   m_ObjectHideFlags: 0
@@ -15256,6 +15392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1189715901
 Prefab:
   m_ObjectHideFlags: 0
@@ -15379,6 +15517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 158080, guid: c54d1e58d5ea3734bbf8f3babbf929f5, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1205694792
 Prefab:
   m_ObjectHideFlags: 0
@@ -15544,6 +15684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: b7594d2e08531374aa5658e1ec054c83, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1211400553
 Prefab:
   m_ObjectHideFlags: 0
@@ -15773,6 +15915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 070b9e4fddc37724186eee9f03af8fc0, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1223812902
 GameObject:
   m_ObjectHideFlags: 0
@@ -15942,6 +16086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 9564dc734ca42254c91e99809e56d919, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1236513921
 Prefab:
   m_ObjectHideFlags: 0
@@ -16249,6 +16395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1253555632
 Prefab:
   m_ObjectHideFlags: 0
@@ -16657,7 +16805,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -16692,7 +16839,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1274045473}
   - 65: {fileID: 1274045474}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16964,7 +17111,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1293901909}
   - 65: {fileID: 1293901910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17282,6 +17429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1324666006
 Prefab:
   m_ObjectHideFlags: 0
@@ -17484,7 +17633,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -17854,6 +18002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1385941850
 Prefab:
   m_ObjectHideFlags: 0
@@ -18323,6 +18473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1406194005
 GameObject:
   m_ObjectHideFlags: 0
@@ -18637,6 +18789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1412628662
 Prefab:
   m_ObjectHideFlags: 0
@@ -18870,6 +19024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 18d49dc7f15ad634bafaa85ac50a52c9, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1425048500
 GameObject:
   m_ObjectHideFlags: 0
@@ -18990,6 +19146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1427448479
 Prefab:
   m_ObjectHideFlags: 0
@@ -19737,6 +19895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1477603849
 Prefab:
   m_ObjectHideFlags: 0
@@ -19828,6 +19988,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 67aaf6887b8459744872d28319413bb4, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1480587819
 GameObject:
   m_ObjectHideFlags: 0
@@ -19995,6 +20157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 218dcb6602b27eb4a9b81f2c2d11cf01, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1501380189
 Prefab:
   m_ObjectHideFlags: 0
@@ -20462,6 +20626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1515585064
 Prefab:
   m_ObjectHideFlags: 0
@@ -20639,6 +20805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100402, guid: 42de0db01dcc90e42a90eb2e496b570d, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1521325822
 GameObject:
   m_ObjectHideFlags: 0
@@ -20713,7 +20881,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 20, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526320450
@@ -20962,6 +21130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 8677a49c138fa28418b4b957b3f805e5, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1538929037
 Prefab:
   m_ObjectHideFlags: 0
@@ -21833,6 +22003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1611896727
 Prefab:
   m_ObjectHideFlags: 0
@@ -22140,6 +22312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 4ea8f8d8f0466b74aa244a66e8cdaf3c, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1630776692 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 182286, guid: c1af039e6745aaa459e0dacf6ea1d746, type: 2}
@@ -22157,6 +22331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 126292, guid: 82d1c84489ad954439fa97896b95e0be, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1631041520
 Prefab:
   m_ObjectHideFlags: 0
@@ -22248,6 +22424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100472, guid: 1480298b6c0163e44812c56f2b315ae1, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1632978762
 GameObject:
   m_ObjectHideFlags: 0
@@ -22504,6 +22682,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 576d5af441b0737449659393bc793e45, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1644252255
 Prefab:
   m_ObjectHideFlags: 0
@@ -22595,6 +22775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d7e3a777548016146813c87a8ad7884d, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1657743013
 Prefab:
   m_ObjectHideFlags: 0
@@ -22768,6 +22950,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c837fd1c8c07e274e8acfb2f082e50a3, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1659065413
 GameObject:
   m_ObjectHideFlags: 0
@@ -22984,6 +23168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5c0a896f2dd12874f9709aa89db6cd71, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1671947616
 Prefab:
   m_ObjectHideFlags: 0
@@ -23079,6 +23265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1675727543
 Prefab:
   m_ObjectHideFlags: 0
@@ -23170,6 +23358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: be3a496173ca5f440ac8c40de28034ac, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1691609530
 GameObject:
   m_ObjectHideFlags: 0
@@ -23454,6 +23644,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1716759146
 Prefab:
   m_ObjectHideFlags: 0
@@ -23983,6 +24175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 79b8d456f113fbc4d8a72d0226e1c773, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1769452197
 Prefab:
   m_ObjectHideFlags: 0
@@ -24387,7 +24581,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -25154,6 +25347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 138734, guid: 50d44012ec4134d439babe1ac44bfe2a, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1844099688
 Prefab:
   m_ObjectHideFlags: 0
@@ -25327,6 +25522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: da7b8d5ef3df0244280f1fcd86d5c38c, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1868505894
 GameObject:
   m_ObjectHideFlags: 0
@@ -25336,7 +25533,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1868505895}
   - 65: {fileID: 1868505896}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25350,7 +25547,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868505894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 270.8, y: 5.6, z: 314}
+  m_LocalPosition: {x: 270.8, y: 5.6, z: 290.44}
   m_LocalScale: {x: 314.38635, y: 10.783525, z: 1}
   m_Children: []
   m_Father: {fileID: 828550462}
@@ -25686,7 +25883,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 40}
+  m_AnchoredPosition: {x: 20, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886195827
@@ -26413,6 +26610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1e4ea736ceb3e1540916aba0fa01c7d0, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1944506253
 GameObject:
   m_ObjectHideFlags: 0
@@ -26629,6 +26828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 98533f7a953b7e14591cab778c4be87b, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1965862355
 Prefab:
   m_ObjectHideFlags: 0
@@ -26720,6 +26921,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: b6a50aacb07d3924baf83467dc19291b, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1972537844 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 45c0cfca96671b647a89cf055871b90a, type: 3}
@@ -26773,6 +26976,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 110566, guid: 0a8689b81cd41e347a8df2dc5d90ecf4, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &1978744661 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 63a9e10da92133748a5b8bd481af97b6, type: 3}
@@ -26790,6 +26995,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100500, guid: a7c6479dccabe534487e67eae398e979, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1979071890
 Prefab:
   m_ObjectHideFlags: 0
@@ -26987,6 +27194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c219ca79b5ad3094db472078e92ec7ea, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &1994066841
 Prefab:
   m_ObjectHideFlags: 0
@@ -27290,6 +27499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c1bbbdf7553947a4d921a5f6da216f30, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &2012178076
 Prefab:
   m_ObjectHideFlags: 0
@@ -27501,6 +27712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 3c8ca1ca5f7151647ac039649a74c7d6, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &2018294474 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 171220, guid: 4c285bdd94eddc542b762ba1ba51f232, type: 2}
@@ -27518,6 +27731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 140470, guid: 7ddc6c8ced109174eb7ce590d165c0f7, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &2021962543
 Prefab:
   m_ObjectHideFlags: 0
@@ -27695,6 +27910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 143426, guid: 5097e38f9f772244494348814c6ca8dd, type: 2}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &2039939887 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 173224, guid: b48b6c403adb101488bad193f36ef0de, type: 2}
@@ -27712,6 +27929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d131a48bf6950f84ca711ca6616a333a, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &2045424685
 GameObject:
   m_ObjectHideFlags: 0
@@ -27829,6 +28048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &2048793330 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: e52bf64a5d303b647838d8e3170f5905, type: 3}
@@ -27882,6 +28103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1 &2051288290
 GameObject:
   m_ObjectHideFlags: 0
@@ -28232,6 +28455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 443018affb7972d40aba588c3b3ec020, type: 3}
   citizenCount: 0
+  scale: {x: 0.6, y: 0.6, z: 0.6}
+  debug: 1
 --- !u!1 &2076827844
 GameObject:
   m_ObjectHideFlags: 0
@@ -28497,6 +28722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: fc168c94fe304ef48b0631baee5e2e3e, type: 3}
   citizenCount: 0
+  scale: {x: 0, y: 0, z: 0}
+  debug: 1
 --- !u!1001 &2102524496
 Prefab:
   m_ObjectHideFlags: 0
@@ -28896,8 +29123,10 @@ MonoBehaviour:
   multiplier: 2.5
   hitTarget: {fileID: 2076827844}
   abductRays: {fileID: 1617029801}
-  bullet: {fileID: 0}
+  bullet: {fileID: 151130, guid: 8a2f67136718e5d4c919a56efb772b25, type: 2}
+  fireLocation: {fileID: 693136877}
   distanceThreshold: 7.5
+  PrintingIsDumb: {x: 0, y: 0, z: 0}
 --- !u!64 &2123262255
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28969,12 +29198,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123262253}
   m_LocalRotation: {x: 0.7071066, y: 0, z: 0, w: -0.70710695}
-  m_LocalPosition: {x: 196.81, y: 2.083, z: 286.31}
+  m_LocalPosition: {x: 196.6, y: 2.08, z: 280.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1617029802}
   - {fileID: 1615442015}
   - {fileID: 1022739088}
+  - {fileID: 693136878}
   m_Father: {fileID: 0}
   m_RootOrder: 13
 --- !u!1 &2127915478

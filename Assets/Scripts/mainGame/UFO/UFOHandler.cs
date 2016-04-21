@@ -14,10 +14,12 @@ public class UFOHandler : MonoBehaviour {
     public GameObject hitTarget;
     public GameObject abductRays;
     public GameObject bullet;
+    public GameObject fireLocation;
     public float distanceThreshold;
 
     private GameObject instantiatedTarget;
     private hitTarget targetScript;
+    RaycastHit rayHit;
 
     bool unlockedA = false;
     bool canFireA = true;
@@ -29,6 +31,8 @@ public class UFOHandler : MonoBehaviour {
     bool canFireY = true;
 
     bool canFireRight = true;
+
+    public Vector3 PrintingIsDumb;
 
     //Abduct Rays values
     private bool keepAbductAlive = false;
@@ -93,10 +97,9 @@ public class UFOHandler : MonoBehaviour {
 
         //Cast Target Object
         Ray rayfire = new Ray(OVRCamera.transform.position, OVRCamera.transform.forward);
-        RaycastHit rayHit;
         //10000000011 in base 10
         int mask = 1027;
-        if (Physics.Raycast(rayfire, out rayHit, 15, mask, QueryTriggerInteraction.Ignore)) {
+        if (Physics.Raycast(rayfire, out rayHit, 100, mask, QueryTriggerInteraction.Ignore)) {
             if (rayHit.collider.gameObject.layer == 8) {
                 Debug.Log("Hit UFO");
             }
@@ -222,6 +225,15 @@ public class UFOHandler : MonoBehaviour {
                 ammoCount = HUDInfo.setAmmo(XboxAxis.RightTrigger, ammoCount - 1);
                 Debug.Log("setAmmo(): " + ammoCount);
                 //Do fire
+                GameObject instantiated = (GameObject)Instantiate(bullet, fireLocation.transform.position, Quaternion.identity);
+                Rigidbody instantiatedRigid = instantiated.GetComponent<Rigidbody>();
+                //THANKS TO WEI
+                instantiatedRigid.AddForce((rayHit.point- instantiated.transform.position).normalized * (float)instantiated.GetComponent<bullet>().getFireForce());
+
+                //instantiatedRigid.AddForceAtPosition(rayHit.point * instantiated.GetComponent<bullet>().getFireForce(), transform.forward);
+               // PrintingIsDumb = 
+
+                //wait Fire
                 StartCoroutine(waitRight());
 
                 if (HUDInfo.getAmmo(XboxAxis.RightTrigger) == 0) {
