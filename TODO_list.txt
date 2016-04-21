@@ -1,0 +1,21 @@
+HUD: Double check positioning in Rift
+
+End game canvas: Create, navigation, high scores, gaze pointer for onscreen keyboard, scores IO, replay game, exit to main screen
+
+buildings.cs: Handle destruction (onDestructionEvent()), callDestructionHandler (attached objects with specific destruction), handle weapon types.
+
+destroyCall.cs (interface), accept destruction info, have function to handle destruction. For things like engineering fountain
+
+Main Menu: Add title, change camera background,
+
+UI: update buttons, maybe change font. Pretty it up
+
+Audio: sounds for each weapon firing (five weapons, one is a lazer beam), abducting rays sound, people getting abducting, destruction noises, UFO getting hit noises, citizen weapon firing noises, fire noises
+
+Weapons: (oh boy), create lazer beam (weapon 1), create main firing gun (right trigger), create dual main firing gun (weapon 2), create a weapon 3, create a bomb (weapon 4), finishing implementing abduction rays.
+
+Citizens: Create people, cars, tanks, police cars. Tanks should be able to fire missiles toward UFO, police officers should be able to fire weapons at UFO. Weapons and missiles cause damage to UFO. People and police officers can be abducted
+
+Environment: Add water effects to fountains, place cars around - some actually driving (or animated to look like driving), place citizens, 
+
+Opening sequence: Sound of UFO crashing, fade from black, UFO is hovering, circle of citizens around UFO, mainGame begins.
