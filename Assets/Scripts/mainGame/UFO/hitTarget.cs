@@ -16,7 +16,7 @@ public class hitTarget : MonoBehaviour {
 	public void colorUpdate(RaycastHit hit) {
         transform.position = hit.point;
         hitLayer = hit.collider.gameObject.layer;
-        if (hit.collider != null && hit.collider.gameObject.layer == 11) {
+        if (hit.collider != null && hit.collider.gameObject.layer == 10) {
             rend.material.color = HitColor;
         }
         else {

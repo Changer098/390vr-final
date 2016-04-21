@@ -5,6 +5,7 @@ public class building : MonoBehaviour {
 
     public GameObject DM_prefab;
     private GameObject destructMesh;
+    public destroyCall destroyScript;
     public int citizenCount;
 
     int rightBulletHitCount = 0;
@@ -40,6 +41,7 @@ public class building : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision col) {
+        Debug.Log("Colliding!");
         if (col.rigidbody.gameObject.name == gameObject.name) {
             //colliding with ourselves, ignore
             Debug.Log("Colliding with ourselves");
@@ -72,6 +74,7 @@ public class building : MonoBehaviour {
                         break;
                 }
             }
+            Debug.Log("Colliding with " + col.collider.gameObject.name);
         }
     }
 }

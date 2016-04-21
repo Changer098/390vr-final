@@ -94,8 +94,8 @@ public class UFOHandler : MonoBehaviour {
         //Cast Target Object
         Ray rayfire = new Ray(OVRCamera.transform.position, OVRCamera.transform.forward);
         RaycastHit rayHit;
-        //100000000111 in base 10
-        int mask = 2055;
+        //10000000011 in base 10
+        int mask = 1027;
         if (Physics.Raycast(rayfire, out rayHit, 15, mask, QueryTriggerInteraction.Ignore)) {
             if (rayHit.collider.gameObject.layer == 8) {
                 Debug.Log("Hit UFO");
