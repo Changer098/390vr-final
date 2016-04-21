@@ -14,8 +14,10 @@ public class UFOHandler : MonoBehaviour {
     public GameObject hitTarget;
     public GameObject abductRays;
     public GameObject bullet;
+    public float distanceThreshold;
 
     private GameObject instantiatedTarget;
+    private hitTarget targetScript;
 
     bool unlockedA = false;
     bool canFireA = true;
@@ -49,7 +51,7 @@ public class UFOHandler : MonoBehaviour {
 	public void updatePosition(float thumbUp, float thumbLeft, float leftThumbVertical) {
         //thumbUp is the Left Thumbstick Vertical, thumbLeft is Left Thumbstick Horizontal
         //handle dampening of input variables
-        float dampenedUp = 0, dampenedLeft = 0, dampenedUpLeft = 0, threshold = 0.1f;
+        float dampenedUp = 0, dampenedLeft = 0, dampenedRight = 0, threshold = 0.1f;
         if (thumbUp > 0) {
             if (thumbUp < threshold) dampenedUp = 0;
             else dampenedUp = thumbUp;
@@ -67,36 +69,45 @@ public class UFOHandler : MonoBehaviour {
             else dampenedLeft = thumbLeft;
         }
         if (leftThumbVertical > 0) {
-            if (leftThumbVertical < threshold) dampenedUpLeft = 0;
-            else dampenedUpLeft = leftThumbVertical;
+            if (leftThumbVertical < threshold) dampenedRight = 0;
+            else dampenedRight = leftThumbVertical;
         }
         else if (leftThumbVertical < 0) {
-            if (leftThumbVertical > (-1 * threshold)) dampenedUpLeft = 0;
-            else dampenedUpLeft = leftThumbVertical;
+            if (leftThumbVertical > (-1 * threshold)) dampenedRight = 0;
+            else dampenedRight = leftThumbVertical;
         }
         //debug variables
         forceLeft = dampenedLeft;
         forceUp = dampenedUp;
-        rigid.AddForce(gameObject.transform.forward * -1 * dampenedUp * multiplier);
+        rigid.AddForce(gameObject.transform.up * dampenedUp * multiplier);
+        Debug.DrawLine(gameObject.transform.forward, gameObject.transform.forward * 10);
         rigid.AddForce(gameObject.transform.right * -1 * dampenedLeft * multiplier);
 
         //Add Vertical force
-        rigid.AddForce(Vector3.up * rigid.mass * dampenedUpLeft);
+        if (gameObject.transform.position.y < distanceThreshold) {
+            rigid.AddForce(Vector3.up * rigid.mass * dampenedRight);
+        }
+        else if (dampenedRight < 0) {
+            rigid.AddForce(Vector3.up * rigid.mass * dampenedRight);
+        }
 
         //Cast Target Object
         Ray rayfire = new Ray(OVRCamera.transform.position, OVRCamera.transform.forward);
         RaycastHit rayHit;
-        //10000000011 in base 10
-        int mask = 1027;
+        //100000000111 in base 10
+        int mask = 2055;
         if (Physics.Raycast(rayfire, out rayHit, 15, mask, QueryTriggerInteraction.Ignore)) {
             if (rayHit.collider.gameObject.layer == 8) {
                 Debug.Log("Hit UFO");
             }
-            if (hitTarget == null) {
-                Instantiate(hitTarget, rayHit.point, Quaternion.identity);
-            }
             else {
-                hitTarget.transform.position = rayHit.point;
+                if (targetScript == null) {
+                    targetScript = hitTarget.GetComponent<hitTarget>();
+                    targetScript.colorUpdate(rayHit);
+                }
+                else {
+                    targetScript.colorUpdate(rayHit);
+                }
             }
         }
     }

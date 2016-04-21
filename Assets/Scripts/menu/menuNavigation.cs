@@ -42,7 +42,7 @@ public class menuNavigation : MonoBehaviour {
         colorTable.Add("controllerToggle", controllerToggle.colors.normalColor);
         colorTable.Add("VRToggle", VRToggle.colors.normalColor);
 
-        DontDestroyOnLoad(OVRCameraRig);
+        //DontDestroyOnLoad(OVRCameraRig);
         //DontDestroyOnLoad(pureBlackObject);
         selectObject();        
 	}
@@ -284,10 +284,6 @@ public class menuNavigation : MonoBehaviour {
     }
     //Fades out the screen, loads the loading scene, and then switches to said scene
     IEnumerator screenFadeOutAndLoad() {
-        //begin loading loader level
-        AsyncOperation loader;
-        loader = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        loader.allowSceneActivation = false;
 
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         pureBlackObject.SetActive(true);
@@ -302,13 +298,7 @@ public class menuNavigation : MonoBehaviour {
             yield return new WaitForSeconds(waitTime);
         }
         Debug.Log("screenFade finished");
-        //loader will not actually finish and that's fine, so we just set it automatically activate.
-        loader.allowSceneActivation = true;
-        /*if (fromMainGame.isFromMainGame) {
-            Debug.Log("Attempting to set active scene");
-            SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
-        }*/
-        Debug.Log("load progress: " + loader.progress);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 
 }

@@ -40,7 +40,6 @@ public class InputHandler : MonoBehaviour {
     InputAxis RightTrigger = new InputAxis("RightTrigger", "", XboxAxis.RightTrigger);
     // Use this for initialization
     void Start() {
-        SceneManager.UnloadScene(1);
         colorTable.Add("calibrateBtn", calibrateBtn.colors.normalColor);
         colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("returnBtn", returnBtn.colors.normalColor);

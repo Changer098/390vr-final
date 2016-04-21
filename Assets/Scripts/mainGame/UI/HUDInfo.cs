@@ -29,7 +29,7 @@ public class HUDInfo : MonoBehaviour {
         public bool isAble;
     }
     public static void addTriggers() {
-        AddTrigger(XboxAxis.RightTrigger, "laserFire", 1f, 50, HUDCanvas.transform.Find("Right Trigger").gameObject);
+        AddTrigger(XboxAxis.RightTrigger, "laserFire", 1f, 10, HUDCanvas.transform.Find("Right Trigger").gameObject);
         AddTrigger(XboxAxis.LeftTrigger, "abduct", 0.5f, 300, HUDCanvas.transform.Find("Left Trigger").gameObject);
     }
     public static ArrayList buttonList = new ArrayList(6);
