@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class UFOHandler : MonoBehaviour {
 
@@ -11,11 +12,19 @@ public class UFOHandler : MonoBehaviour {
     public float multiplier = 2.5f;
     bool canMove = false;
     Rigidbody rigid;
+
+
     public GameObject hitTarget;
     public GameObject abductRays;
-    public GameObject bullet;
-    public GameObject fireLocation;
-    public float distanceThreshold;
+    //public GameObject bullet;
+    public GameObject singleBeam;               //the prefab of the first beam we instantiate (Right Trigger)
+    public GameObject constBeam;                //the prefab of the constantly on beam (B Btn)
+    public BeamParam ourBeamParam;              //The param of the first instantiated beam (Right Trigger)
+    public BeamParam secondBeamParam;           //The param of the second instantiated beam (A Btn)
+    public BeamParam constBeamParam;            //The param of the third instantiated, first constant beam (B Btn)
+    public GameObject fireLocation;             //The location for the first beam and a beam on A btn
+    public GameObject fireLocation2;            //The location of the second beam created on A btn
+    public float distanceThreshold;             //Value that determines how high the UFO can go
 
     private GameObject instantiatedTarget;
     private hitTarget targetScript;
@@ -32,11 +41,14 @@ public class UFOHandler : MonoBehaviour {
 
     bool canFireRight = true;
 
-    public Vector3 PrintingIsDumb;
+    //public Vector3 PrintingIsDumb;
 
     //Abduct Rays values
     private bool keepAbductAlive = false;
-	void Start () {
+    //Const Beam value
+    private bool keepConstBeamAlive = false;
+
+    void Start () {
         moveCamera.isAlive = true;
         rigid = GetComponent<Rigidbody>();
         StartCoroutine(holdPosition());
@@ -127,7 +139,7 @@ public class UFOHandler : MonoBehaviour {
         if (!unlockedA) {
             if (value >= 1) {
                 unlockedA = true;
-                HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 20);
+                HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 10);
                 return true;
             }
             return false;
@@ -193,9 +205,14 @@ public class UFOHandler : MonoBehaviour {
             Debug.Log("Firing A!");
             int ammoCount = HUDInfo.getAmmo(XboxKey.A);
             if (ammoCount > 0) {
-                Debug.Log("Ammo: " + ammoCount);
-                ammoCount = ammoCount - 1;
-                Debug.Log("setAmmo(): " + HUDInfo.setAmmo(XboxKey.A, ammoCount));
+                GameObject s1 = (GameObject)Instantiate(singleBeam, fireLocation.transform.position, fireLocation.transform.rotation);
+                s1.transform.LookAt(rayHit.point);
+                s1.GetComponent<BeamParam>().SetBeamParam(ourBeamParam);
+                s1.AddComponent<lazerBullet>().setType(1);
+
+                StartCoroutine(fireBeamTwoAndWait(fireLocation2.transform.position, fireLocation2.transform.rotation));
+
+                ammoCount = HUDInfo.setAmmo(XboxKey.A, ammoCount - 2);
                 if (HUDInfo.getAmmo(XboxKey.A) == 0) {
                     HUDInfo.callReload(XboxKey.A);
                 }
@@ -207,7 +224,15 @@ public class UFOHandler : MonoBehaviour {
         }
     }
     public void fireB() {
+        if (HUDInfo.getAble(XboxKey.B) && canFireB) {
+            Debug.Log("Firing B!");
+            int ammoCount = HUDInfo.getAmmo(XboxKey.B);
 
+            if (ammoCount > 0) {
+                ammoCount = HUDInfo.setAmmo(XboxAxis.LeftTrigger, ammoCount - 1);
+                keepConstBeamAlive = true;
+            }
+        }
     }
     public void fireX() {
 
@@ -221,22 +246,28 @@ public class UFOHandler : MonoBehaviour {
             int ammoCount = HUDInfo.getAmmo(XboxAxis.RightTrigger);
             
             if (ammoCount > 0) {
-                Debug.Log("Ammo: " + ammoCount);
+                //Debug.Log("Ammo: " + ammoCount);
                 ammoCount = HUDInfo.setAmmo(XboxAxis.RightTrigger, ammoCount - 1);
-                Debug.Log("setAmmo(): " + ammoCount);
+                //Debug.Log("setAmmo(): " + ammoCount);
                 //Do fire
-                GameObject instantiated = (GameObject)Instantiate(bullet, fireLocation.transform.position, Quaternion.identity);
+                /*GameObject instantiated = (GameObject)Instantiate(bullet, fireLocation.transform.position, Quaternion.identity);
                 Rigidbody instantiatedRigid = instantiated.GetComponent<Rigidbody>();
                 //THANKS TO WEI
-                instantiatedRigid.AddForce((rayHit.point- instantiated.transform.position).normalized * (float)instantiated.GetComponent<bullet>().getFireForce());
+                instantiatedRigid.AddForce((rayHit.point- instantiated.transform.position).normalized * (float)instantiated.GetComponent<bullet>().getFireForce());*/
+                GameObject s1 = (GameObject)Instantiate(singleBeam, fireLocation.transform.position, fireLocation.transform.rotation);
+                s1.transform.LookAt(rayHit.point);
+                s1.GetComponent<BeamParam>().SetBeamParam(ourBeamParam);
+                s1.AddComponent<lazerBullet>().setType(0);
+
 
                 //instantiatedRigid.AddForceAtPosition(rayHit.point * instantiated.GetComponent<bullet>().getFireForce(), transform.forward);
-               // PrintingIsDumb = 
+                // PrintingIsDumb = 
 
                 //wait Fire
                 StartCoroutine(waitRight());
 
-                if (HUDInfo.getAmmo(XboxAxis.RightTrigger) == 0) {
+                if (HUDInfo.getAmmo(XboxAxis.RightTrigger) <= 0 || ammoCount <= 0) {
+                    Debug.Log("calling reload");
                     HUDInfo.callReload(XboxAxis.RightTrigger);
                 }
             }
@@ -251,9 +282,9 @@ public class UFOHandler : MonoBehaviour {
             int ammoCount = HUDInfo.getAmmo(XboxAxis.LeftTrigger);
 
             if (ammoCount > 0) {
-                Debug.Log("Ammo: " + ammoCount);
+                //Debug.Log("Ammo: " + ammoCount);
                 ammoCount = HUDInfo.setAmmo(XboxAxis.LeftTrigger, ammoCount - 1);
-                Debug.Log("setAmmo(): " + ammoCount);
+                //Debug.Log("setAmmo(): " + ammoCount);
                 //Do fire
                 keepAbductAlive = true;
 
@@ -262,7 +293,7 @@ public class UFOHandler : MonoBehaviour {
                 }
             }
             else {
-                Debug.Log("Cannot fire, getAmmo <= 0, is " + ammoCount);
+                Debug.Log("Cannot fire, getAmmo <= 0, is " + HUDInfo.getAmmo(XboxAxis.LeftTrigger));
             }
         }
     }
@@ -285,19 +316,71 @@ public class UFOHandler : MonoBehaviour {
             }
         }
     }
+    IEnumerator constBeamer() {
+        bool justSet = false;
+        GameObject beam = null;
+        while (true) {
+            if (keepConstBeamAlive) {
+                //do instantiation and such
+                if (beam == null) {
+                    beam = (GameObject)Instantiate(constBeam, fireLocation.transform.position, fireLocation.transform.rotation);
+                    beam.transform.LookAt(rayHit.point);
+                    beam.GetComponent<BeamParam>().SetBeamParam(constBeamParam);
+                    lazerBullet lazBull = beam.AddComponent<lazerBullet>();
+                    lazBull.setType(2);
+                }
+                else {
+                    beam.SetActive(true);
+                }
+                yield return new WaitForSeconds(0.1f);
+                keepConstBeamAlive = false;
+                justSet = false;
+            }
+            else if (!keepConstBeamAlive && !justSet) {
+                //turn off and such
+                if (beam != null) {
+                    beam.SetActive(false);
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if (!keepConstBeamAlive && justSet) {
+                yield return new WaitForSeconds(0.25f);
+                justSet = false;
+            }
+        }
+    }
 
     //wait a little bit so you don't waste all your ammo
     IEnumerator waitRight() {
         canFireRight = false;
-        float waitTime = 0.25f;
+        float waitTime = 0.5f;
         float start = Time.unscaledTime;
         /*while (Time.unscaledTime < start + waitTime) {
             yield return null;
         }*/
-        int iterations = 10;
-        for (int i = 0; i < iterations; i++) {
+        while (Time.unscaledTime < start + waitTime) {
             yield return null;
         }
+            
         canFireRight = true;
+    }
+    IEnumerator fireBeamTwoAndWait(Vector3 position, Quaternion rotation) {
+        canFireA = false;
+        //wait 10 frames before firing
+        for (int i = 0; i < 10; i++) {
+            yield return new WaitForEndOfFrame();
+        }
+        GameObject s2 = (GameObject)Instantiate(singleBeam, position, rotation);
+        s2.transform.LookAt(rayHit.point);
+        s2.GetComponent<BeamParam>().SetBeamParam(secondBeamParam);
+        s2.AddComponent<lazerBullet>().setType(1);
+
+
+        float waitTime = 1f;
+        float start = Time.unscaledTime;
+        while (Time.unscaledTime < start + waitTime) {
+            yield return null;
+        }
+        canFireA = true;
     }
 }

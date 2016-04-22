@@ -7,12 +7,15 @@ public class building : MonoBehaviour {
     private GameObject destructMesh;
     public destroyCall destroyScript;
     public int citizenCount;
+    public int rightHitDestructionAmount = 5;
+    public int destructionAmount = 100;                   //How many points we gain for destroying
 
     int rightBulletHitCount = 0;
     int weapon1HitCount = 0;
     int weapon2HitCount = 0;
     int weapon3HitCount = 0;
     int weapon4HitCount = 0;
+    int destructionBit;                             //How many points we gain for hit
     public Vector3 scale;
     public bool debug = false;
 	// Use this for initialization
@@ -21,6 +24,7 @@ public class building : MonoBehaviour {
         if (scale.x == 0) {
             scale = new Vector3(1, 1, 1);
         }
+        destructionBit = (int)(0.1f * destructionAmount); 
         StartCoroutine(generateColliders());
     }
 
@@ -30,32 +34,39 @@ public class building : MonoBehaviour {
         destructMesh = (GameObject)Instantiate(DM_prefab, gameObject.transform.position, QuanternionHelper.Euler(rotation.x, rotation.y, rotation.z));
         destructMesh.transform.localScale = scale;
         destructMesh.transform.position = gameObject.transform.position;
-        //destructMesh.AddComponent<buildDestruct>();
+        destructMesh.AddComponent<buildDestruct>();
 
         int childCount = destructMesh.transform.childCount;
         for (int i = 0; i < childCount; i++) {
             Transform childT = destructMesh.transform.GetChild(i);
-            MeshCollider collider = childT.gameObject.AddComponent<MeshCollider>();
-            Rigidbody rigid = childT.gameObject.AddComponent<Rigidbody>();
-            //GameObject buildDestructObject = GameObject.Find("buildDestructGet");
-            //buildDestruct buildDestuctScript = buildDestructObject.GetComponent<buildDestruct>();
-            collider.convex = true;
-            rigid.drag = 1;
-            rigid.isKinematic = true;   //set to false, when actually do simulations
-            //childT.gameObject.SetActive(false);
+            if (childT.name == "Plane") {
+                Debug.Log("Skipping on: " + gameObject.name);
+                continue;
+            }
+            else {
+                MeshCollider collider = childT.gameObject.AddComponent<MeshCollider>();
+                Rigidbody rigid = childT.gameObject.AddComponent<Rigidbody>();
+                collider.convex = true;
+                rigid.drag = 1;
+                rigid.isKinematic = true;   //set to false, when actually do simulations
+                //childT.gameObject.SetActive(false);
+            }
 
             yield return null;
         }
         destructMesh.SetActive(false);
             for (int i = 0; i < childCount; i++) {
                 Transform childT = destructMesh.transform.GetChild(i);
-                Rigidbody rigid = childT.GetComponent<Rigidbody>();
+                if (childT.name == "Plane") {
+                    continue;
+                }
+            Rigidbody rigid = childT.GetComponent<Rigidbody>();
                 rigid.isKinematic = false;
             }
     }
 
     void OnCollisionEnter(Collision col) {
-        //Debug.Log("Colliding!");
+        Debug.Log("Colliding!");
         if (col.rigidbody.gameObject.name == gameObject.name) {
             //colliding with ourselves, ignore
             Debug.Log("Colliding with ourselves");
@@ -71,22 +82,23 @@ public class building : MonoBehaviour {
                 }
                 switch (weaponType) {
                     case -1:
-                        //Left Trigger
-                        //do abducting shit
                         break;
                     case 0:
                         //Right Trigger
                         rightBulletHitCount++;
                         if (bulletScript != null) bulletScript.OnCollided(col);
-                        if (rightBulletHitCount >= 5) {
-                            Debug.Log("Destroying the building");
+                        if (rightBulletHitCount >= rightHitDestructionAmount) {
+                            Debug.Log("Destroying the building: " + name);
                             destructMesh.SetActive(true);
                             GameObject.Destroy(gameObject);
-                            //buildDestruct destruct = destructMesh.GetComponent<buildDestruct>();
-                            //destruct.hugeExplosion();
+                            HUDInfo.UpdateDestruction(destructionAmount);
+                        }
+                        else {
+                            HUDInfo.UpdateDestruction(destructionBit);
                         }
                         break;
                     case 1:
+                        //A weapon
                         break;
                     case 2:
                         break;
@@ -100,7 +112,37 @@ public class building : MonoBehaviour {
                 }
                 bulletScript.OnCollided(col);
             }
-            Debug.Log("Colliding with " + col.collider.gameObject.name);
+        }
+    }
+    public void CollisionFaker(bullet bulletScript) {
+        switch (bulletScript.getType()) {
+            case -1:
+                break;
+            case 0:
+                //Right Trigger
+                rightBulletHitCount++;
+                if (rightBulletHitCount >= rightHitDestructionAmount) {
+                    Debug.Log("Destroying the building: " + name);
+                    destructMesh.SetActive(true);
+                    GameObject.Destroy(gameObject);
+                    HUDInfo.UpdateDestruction(destructionAmount);
+                }
+                else {
+                    HUDInfo.UpdateDestruction(destructionBit);
+                }
+                break;
+            case 1:
+                //A weapon
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                Debug.Log("building collision: unsupported weaponType. Type: " + bulletScript.getType());
+                break;
         }
     }
 }

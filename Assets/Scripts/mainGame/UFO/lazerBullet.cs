@@ -8,7 +8,7 @@ public class lazerBullet : MonoBehaviour, bullet {
     public float timeSpan;
     // Use this for initialization
 	void Start () {
-        StartCoroutine(destroyAfterTime());
+        
 	}
 	
 	// Update is called once per frame
@@ -19,16 +19,15 @@ public class lazerBullet : MonoBehaviour, bullet {
     public int getType() {
         return bulletType;
     }
+    public void setType(int set) {
+        bulletType = set;
+    }
     public float getFireForce() {
         return fireForce;
     }
 
     public void OnCollided(Collision coll) {
-        Destroy(gameObject);
-    }
-
-    IEnumerator destroyAfterTime() {
-        yield return new WaitForSeconds(timeSpan);
-        Destroy(gameObject);
+        Debug.Log("calling collided");
+        //Destroy(gameObject);
     }
 }
