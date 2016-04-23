@@ -1,0 +1,2 @@
+University: 0.6
+Stone: 0.6977794
