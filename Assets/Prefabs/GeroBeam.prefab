@@ -315,11 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864ef5012ba97134e9e78cda872bdd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
+  col: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,7 +330,7 @@ MonoBehaviour:
   HitEffect: {fileID: 100004}
   MaxLength: 160
   AddLength: 0.05
-  Width: 0.3
+  Width: 0.1
   NowLengthGlobal: 0
 --- !u!114 &11400008
 MonoBehaviour:
@@ -347,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b00a6d8871d2f41b9ce7b2911f8c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxWiggle: 1
+  MaxWiggle: 0.5
   WiggleSpd: 1
   DefScale: {x: 0, y: 0, z: 0}
 --- !u!114 &11400010
@@ -377,11 +373,7 @@ MonoBehaviour:
   ShotPower: 0
   Disturbance: 45
   RldTime: 0
-  col:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  col: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,11 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efe3bc5e3edb3e42b0a9a45eec91b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  BeamColor: {r: 1, g: 1, b: 1, a: 1}
   AnimationSpd: 0.1
   Scale: 1
   MaxLength: 32

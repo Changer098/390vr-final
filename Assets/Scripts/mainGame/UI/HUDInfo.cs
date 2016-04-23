@@ -13,6 +13,7 @@ public class HUDInfo : MonoBehaviour {
 
     public static int destruction = 0;
     public static float health = 1;
+    public static int citizenWorth = 1;
     private struct UIbutton {
         public XboxKey key;
         public int keyCount;

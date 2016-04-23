@@ -6,26 +6,46 @@ public class building : MonoBehaviour {
     public GameObject DM_prefab;
     private GameObject destructMesh;
     public destroyCall destroyScript;
-    public int citizenCount;
-    public int rightHitDestructionAmount = 5;
-    public int destructionAmount = 100;                   //How many points we gain for destroying
+    int citizenCount;
+    int rightHitDestructionAmount = 5;
+    int weapon1HitDestructionAmount = 7;
+    int weapon2HitDestructionAmount = 25;
+    int destructionAmount = 100;                   //How many points we gain for destroying
+
 
     int rightBulletHitCount = 0;
+    int leftBulletHitCount = 0;
     int weapon1HitCount = 0;
     int weapon2HitCount = 0;
     int weapon3HitCount = 0;
     int weapon4HitCount = 0;
     int destructionBit;                             //How many points we gain for hit
     public Vector3 scale;
-    public bool debug = false;
+    bool debug = false;
+    bool DontGenerate = false;
+    public bool resetPosition = false;
 	// Use this for initialization
 	void Start () {
         citizenCount = Random.Range(0, 200);
         if (scale.x == 0) {
             scale = new Vector3(1, 1, 1);
         }
+        //assign random values to fields
+        destructionAmount = Random.Range(100, 500);
+        rightHitDestructionAmount = Random.Range(5, 12);
+        weapon1HitCount = Random.Range(5, 15);
+        weapon2HitCount = Random.Range(25, 75);
+
+
         destructionBit = (int)(0.1f * destructionAmount); 
-        StartCoroutine(generateColliders());
+        if (!DontGenerate) StartCoroutine(generateColliders());
+    }
+    void Update() {
+        if (debug && resetPosition && destructMesh != null) {
+            resetPosition = false;
+            destructMesh.transform.position = gameObject.transform.position;
+            Debug.Log("X: " + transform.localScale.x + ", Y: " + transform.localScale.y + ", Z: " + transform.localScale.z);
+        }
     }
 
     IEnumerator generateColliders() {
@@ -34,6 +54,10 @@ public class building : MonoBehaviour {
         destructMesh = (GameObject)Instantiate(DM_prefab, gameObject.transform.position, QuanternionHelper.Euler(rotation.x, rotation.y, rotation.z));
         destructMesh.transform.localScale = scale;
         destructMesh.transform.position = gameObject.transform.position;
+        if (debug) {
+            //Debug mode, so don't generate colliders or anything of the sort
+            yield break;
+        }
         destructMesh.AddComponent<buildDestruct>();
 
         int childCount = destructMesh.transform.childCount;
@@ -55,14 +79,14 @@ public class building : MonoBehaviour {
             yield return null;
         }
         destructMesh.SetActive(false);
-            for (int i = 0; i < childCount; i++) {
-                Transform childT = destructMesh.transform.GetChild(i);
-                if (childT.name == "Plane") {
-                    continue;
-                }
-            Rigidbody rigid = childT.GetComponent<Rigidbody>();
-                rigid.isKinematic = false;
+        for (int i = 0; i < childCount; i++) {
+            Transform childT = destructMesh.transform.GetChild(i);
+            if (childT.name == "Plane") {
+                continue;
             }
+            Rigidbody rigid = childT.GetComponent<Rigidbody>();
+            rigid.isKinematic = false;
+        }
     }
 
     void OnCollisionEnter(Collision col) {
@@ -115,6 +139,12 @@ public class building : MonoBehaviour {
         }
     }
     public void CollisionFaker(bullet bulletScript) {
+        if (bulletScript == null) {
+            Debug.Log("CollisionFaker null bulletScript!");
+            return;
+        }
+        //Debug.Log("Calling CollisionFaker()");
+        Debug.Log("bulletScript_type: " + bulletScript.getType());
         switch (bulletScript.getType()) {
             case -1:
                 break;
@@ -126,15 +156,41 @@ public class building : MonoBehaviour {
                     destructMesh.SetActive(true);
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
+                    killCitizens();
                 }
                 else {
-                    HUDInfo.UpdateDestruction(destructionBit);
+                    HUDInfo.UpdateDestruction(destructionBit / rightHitDestructionAmount);
                 }
                 break;
             case 1:
                 //A weapon
+                weapon1HitCount++;
+                Debug.Log("A weapon hit, count: " + weapon1HitCount);
+                if (weapon1HitCount >= weapon1HitDestructionAmount) {
+                    Debug.Log("Destroying the building: " + name);
+                    destructMesh.SetActive(true);
+                    GameObject.Destroy(gameObject);
+                    HUDInfo.UpdateDestruction(destructionAmount);
+                    killCitizens();
+                }
+                else {
+                    HUDInfo.UpdateDestruction(Mathf.Clamp((int)(destructionBit / weapon1HitDestructionAmount),(int)1,(int)100));
+                }
                 break;
             case 2:
+                //B weapon
+                weapon2HitCount++;
+                Debug.Log("B weapon hit, count: " + weapon2HitCount);
+                if (weapon2HitCount >= weapon2HitDestructionAmount) {
+                    Debug.Log("Destroying the building: " + name);
+                    destructMesh.SetActive(true);
+                    GameObject.Destroy(gameObject);
+                    HUDInfo.UpdateDestruction(destructionAmount);
+                    killCitizens();
+                }
+                else {
+                    HUDInfo.UpdateDestruction(Mathf.Clamp((int)(destructionBit / weapon2HitDestructionAmount), (int)1, (int)100));
+                }
                 break;
             case 3:
                 break;
@@ -145,4 +201,12 @@ public class building : MonoBehaviour {
                 break;
         }
     }
+
+    //adds points for each citizen kill
+    private void killCitizens() {
+        HUDInfo.UpdateDestruction(citizenCount * HUDInfo.citizenWorth);
+    }
+
+    public int getCitizenCount() { return this.citizenCount; }
+    
 }

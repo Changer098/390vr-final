@@ -120,7 +120,7 @@ public class InputHandler : MonoBehaviour {
                 //fire mechanism
                 ufoHandler.fireA();
             }
-            if (managerMain.GetKeyDown(BBtn)) {
+            if (managerMain.GetKey(BBtn)) {
                 ufoHandler.fireB();
             }
             if (managerMain.GetKeyDown(XBtn)) {

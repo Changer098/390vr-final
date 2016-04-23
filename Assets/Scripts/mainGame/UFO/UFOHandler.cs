@@ -41,18 +41,32 @@ public class UFOHandler : MonoBehaviour {
 
     bool canFireRight = true;
 
+    public bool UnlockAll = true;
+
     //public Vector3 PrintingIsDumb;
 
     //Abduct Rays values
     private bool keepAbductAlive = false;
     //Const Beam value
     private bool keepConstBeamAlive = false;
+    private GameObject beam = null;
 
     void Start () {
         moveCamera.isAlive = true;
         rigid = GetComponent<Rigidbody>();
         StartCoroutine(holdPosition());
         StartCoroutine(abducter());
+        StartCoroutine(constBeamer());
+        
+        if (UnlockAll) {
+            //unlock all the weapons
+            unlockedA = true;
+            HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 10);
+            unlockedB = true;
+            HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 150);
+            unlockedX = true;
+            HUDInfo.AddButton(XboxKey.X, "weaponX", 0.75f, 1);
+        }
 	}
     void FixedUpdate() {
         //gameObject.transform.rotation = OVRCamera.transform.rotation;
@@ -147,7 +161,7 @@ public class UFOHandler : MonoBehaviour {
         else if (!unlockedB) {
             if (value >= 1) {
                 unlockedB = true;
-                HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 10);
+                HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 150);
                 return true;
             }
             return false;
@@ -229,8 +243,14 @@ public class UFOHandler : MonoBehaviour {
             int ammoCount = HUDInfo.getAmmo(XboxKey.B);
 
             if (ammoCount > 0) {
-                ammoCount = HUDInfo.setAmmo(XboxAxis.LeftTrigger, ammoCount - 1);
+                ammoCount = HUDInfo.setAmmo(XboxKey.B, ammoCount - 1);
                 keepConstBeamAlive = true;
+                if (beam != null) beam.transform.position = fireLocation.transform.position;
+
+                if (ammoCount <= 0) {
+                    Debug.Log("Reloading!");
+                    HUDInfo.callReload(XboxKey.B);
+                }
             }
         }
     }
@@ -311,14 +331,13 @@ public class UFOHandler : MonoBehaviour {
                 yield return new WaitForSeconds(0.1f);
             }
             else if (!keepAbductAlive && justSet) {
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(0.1f);
                 justSet = false;
             }
         }
     }
     IEnumerator constBeamer() {
         bool justSet = false;
-        GameObject beam = null;
         while (true) {
             if (keepConstBeamAlive) {
                 //do instantiation and such
@@ -328,17 +347,21 @@ public class UFOHandler : MonoBehaviour {
                     beam.GetComponent<BeamParam>().SetBeamParam(constBeamParam);
                     lazerBullet lazBull = beam.AddComponent<lazerBullet>();
                     lazBull.setType(2);
+                    beam.GetComponent<BeamParam>().bEnd = false;
                 }
                 else {
                     beam.SetActive(true);
+                    beam.transform.position = fireLocation.transform.position;
+                    beam.GetComponent<BeamParam>().bEnd = false;
                 }
                 yield return new WaitForSeconds(0.1f);
                 keepConstBeamAlive = false;
-                justSet = false;
+                justSet = true;
             }
             else if (!keepConstBeamAlive && !justSet) {
                 //turn off and such
                 if (beam != null) {
+                    beam.GetComponent<BeamParam>().bEnd = true;
                     beam.SetActive(false);
                 }
                 yield return new WaitForSeconds(0.1f);
@@ -376,7 +399,7 @@ public class UFOHandler : MonoBehaviour {
         s2.AddComponent<lazerBullet>().setType(1);
 
 
-        float waitTime = 1f;
+        float waitTime = 0.5f;
         float start = Time.unscaledTime;
         while (Time.unscaledTime < start + waitTime) {
             yield return null;
