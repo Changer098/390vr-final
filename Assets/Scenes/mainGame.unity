@@ -1268,6 +1268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1dbb0e3fcad90ad4a89fbf11bf0e07d7, type: 3}
   scale: {x: 1.488069, y: 1.488069, z: 1.488069}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &43408106
 Prefab:
@@ -2062,6 +2064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: f31b8de04630a8e47bef6d1e8b887267, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &63026042
 Prefab:
@@ -2732,6 +2736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 199240, guid: 1c7999b2ed13c324bbc689e45d59c6cf, type: 2}
   scale: {x: 1, y: 1, z: 1}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &87098196
 Prefab:
@@ -2832,7 +2838,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22420840, guid: 15e07828266b91e41bc488797fe21a34, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 22420840, guid: 15e07828266b91e41bc488797fe21a34, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -2885,6 +2891,21 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 164250, guid: 15e07828266b91e41bc488797fe21a34, type: 2}
   m_PrefabInternal: {fileID: 87401450}
+--- !u!114 &87401452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87401451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348388bc935f36447824adb45370182e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyBuilding: {fileID: 0}
+  _destroyApartment: {fileID: 0}
+  _destroyTree: {fileID: 0}
+  _destroyCar: {fileID: 0}
 --- !u!1001 &89538497
 Prefab:
   m_ObjectHideFlags: 0
@@ -5354,6 +5375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 4b992e6670d86b74dbf8b98da1acdadd, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &181851980
 Prefab:
@@ -6973,6 +6996,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &218213195
 GameObject:
@@ -7194,6 +7219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 9307ab5a93acdc34aa45822565933354, type: 3}
   scale: {x: 0.5517253, y: 0.5517253, z: 0.5517253}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &221676698
 GameObject:
@@ -11333,6 +11360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 68423df30e94aab4b851ade6d2d56417, type: 3}
   scale: {x: 0.6007791, y: 0.6007791, z: 0.6007791}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &340814242
 Prefab:
@@ -13382,7 +13411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 104572, guid: cc027d00c75d6174792c92001dbe23a7, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1.459301, y: 1.459301, z: 1.459301}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &427481690
 Prefab:
@@ -13813,6 +13844,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 69b096017e3a7ac41ac0d783630c06c1, type: 3}
   scale: {x: 0.5895058, y: 0.5895058, z: 0.5895058}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &440905082
 Prefab:
@@ -13912,7 +13945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 195466, guid: 1bbe186808e80c346941b4ce8533a46f, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 86.91386, y: 86.91386, z: 86.91386}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &448186129
 GameObject:
@@ -14409,6 +14444,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: fb614611213d4fe4491d4bbb071d8a16, type: 3}
   scale: {x: 0.5225422, y: 0.5225422, z: 0.5225422}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &451148297
 Prefab:
@@ -15175,6 +15212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 158916, guid: 866e7a83d12343840ab1836e429e71fc, type: 2}
   scale: {x: 0.7259397, y: 0.7259397, z: 0.7259397}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &474549686
 Prefab:
@@ -15869,6 +15908,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1d798e49c7a658d489a16956716b5acc, type: 3}
   scale: {x: 0.695835, y: 0.695835, z: 0.695835}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &504504950
 Prefab:
@@ -17481,6 +17522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: e10f45be64f680048bf303e5fd31f6d0, type: 3}
   scale: {x: 1, y: 1, z: 1}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &554108168
 GameObject:
@@ -17613,6 +17656,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 44079428a42d59543b931236f0f4b4c1, type: 3}
   scale: {x: 1.210417, y: 1.210417, z: 1.210417}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &557125634
 GameObject:
@@ -18837,6 +18882,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &586529158
 Prefab:
@@ -19175,6 +19222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &596266306
 Prefab:
@@ -20349,6 +20398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: e8e3a9b8fdd06ff4e9de56c430d2eab9, type: 3}
   scale: {x: 0.4826228, y: 0.4826228, z: 0.4826228}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &612767582
 Prefab:
@@ -20739,6 +20790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: a8cedd08e823eda40a3137bcc25660cb, type: 3}
   scale: {x: 0.6977794, y: 0.6977794, z: 0.6977794}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &621375753
 Prefab:
@@ -22339,6 +22392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 7ef32b1c72ba4d5498e61b9284a5eb8f, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &677294297
 Prefab:
@@ -22755,6 +22810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &685268810
 Prefab:
@@ -23860,6 +23917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &718550149
 Prefab:
@@ -24016,6 +24075,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 955ca12cfdf6b5c458e86f60f77aab1e, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &718576945
 Prefab:
@@ -24226,6 +24287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &720284508
 Prefab:
@@ -24837,6 +24900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 6858155f27550fd45bb98244bd96d4a5, type: 3}
   scale: {x: 0.7388392, y: 0.7388392, z: 0.7388392}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &732210933
 Prefab:
@@ -27776,6 +27841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 101466, guid: 3fb24761cb96fb94882515361c82184a, type: 2}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &838218218
 Prefab:
@@ -30263,7 +30330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 189688, guid: f198196159b9a8243a35dad476004606, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.4539781, y: 0.4539781, z: 0.4539781}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &915975689
 Prefab:
@@ -32370,6 +32439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 6e63e3bdd6a83884ea2c49c60d87bdf9, type: 3}
   scale: {x: 1.288662, y: 1.288662, z: 1.288662}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &984541719
 Prefab:
@@ -32988,6 +33059,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2dc0b44f05fdbda46b73add996cde220, type: 2}
+    - target: {fileID: 172576, guid: aa09fecc202da6f4cadcc116c200a55f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa09fecc202da6f4cadcc116c200a55f, type: 2}
   m_IsPrefabParent: 0
@@ -33621,7 +33696,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 67b819e37e6293b4f85bf8bf5650ecb3, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1.243758, y: 1.243758, z: 1.243758}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1015864968
 Prefab:
@@ -33970,6 +34047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 110566, guid: 0a8689b81cd41e347a8df2dc5d90ecf4, type: 2}
   scale: {x: 0.9128228, y: 0.9128228, z: 0.9128228}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1024767783 stripped
 GameObject:
@@ -34478,6 +34557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 154784, guid: d5bfab24757a48f48b3d04263e601a82, type: 2}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1048739160
 Prefab:
@@ -36382,6 +36463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 01b4c70b074eeaa4ca3c9cfcacc2fa2c, type: 3}
   scale: {x: 0.6976543, y: 0.6976543, z: 0.6976543}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!20 &1107911294 stripped
 Camera:
@@ -37147,6 +37230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1142995670
 GameObject:
@@ -38166,6 +38251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 346f3452821b5984891afc2329e2d207, type: 3}
   scale: {x: 0.6579994, y: 0.6579994, z: 0.6579994}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1178407323
 Prefab:
@@ -38706,6 +38793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1186620082
 Prefab:
@@ -39059,7 +39148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 158080, guid: c54d1e58d5ea3734bbf8f3babbf929f5, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1.055925, y: 1.055925, z: 1.055925}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1205694792
 Prefab:
@@ -39436,6 +39527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: b7594d2e08531374aa5658e1ec054c83, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1211400553
 Prefab:
@@ -39798,6 +39891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 070b9e4fddc37724186eee9f03af8fc0, type: 3}
   scale: {x: 0.7490141, y: 0.7490141, z: 0.7490141}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1223812902
 GameObject:
@@ -40220,6 +40315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 9564dc734ca42254c91e99809e56d919, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1234985542
 Prefab:
@@ -41220,6 +41317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1253555632
 Prefab:
@@ -43180,6 +43279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1318496916
 Prefab:
@@ -45191,6 +45292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 99a1cd77fe419d04bb1ede96a868d0f7, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1379024274
 Prefab:
@@ -46129,6 +46232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1409010339
 Prefab:
@@ -46468,6 +46573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1412628662
 Prefab:
@@ -46723,6 +46830,49 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 874fbd1552f9a4940b3bb11b18da7513, type: 3}
+--- !u!1 &1415280823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1415280825}
+  - 114: {fileID: 1415280824}
+  m_Layer: 0
+  m_Name: AudioDB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1415280824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415280823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348388bc935f36447824adb45370182e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyBuilding: {fileID: 0}
+  _destroyApartment: {fileID: 0}
+  _destroyTree: {fileID: 0}
+  _destroyCar: {fileID: 0}
+--- !u!4 &1415280825
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415280823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
 --- !u!1001 &1415589544
 Prefab:
   m_ObjectHideFlags: 0
@@ -46936,6 +47086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 18d49dc7f15ad634bafaa85ac50a52c9, type: 3}
   scale: {x: 1.085127, y: 1.085127, z: 1.085127}
+  newPosition: {x: 163.49, y: 0.25, z: 279.44}
+  usePosition: 1
   resetPosition: 0
 --- !u!1001 &1418943743
 Prefab:
@@ -47283,6 +47435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1427448479
 Prefab:
@@ -48581,6 +48735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1458311719
 Prefab:
@@ -48945,6 +49101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 67aaf6887b8459744872d28319413bb4, type: 3}
   scale: {x: 0.6556451, y: 0.6556451, z: 0.6556451}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1480587819
 GameObject:
@@ -49179,6 +49337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 218dcb6602b27eb4a9b81f2c2d11cf01, type: 3}
   scale: {x: 0.9052129, y: 0.9052129, z: 0.9052129}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1501380189
 Prefab:
@@ -51622,6 +51782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1515585064
 Prefab:
@@ -51971,7 +52133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100402, guid: 42de0db01dcc90e42a90eb2e496b570d, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.3001043, y: 0.3001043, z: 0.3001043}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1521325822
 GameObject:
@@ -52715,7 +52879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 8677a49c138fa28418b4b957b3f805e5, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7224397, y: 0.7224397, z: 0.7224397}
+  newPosition: {x: 214.88, y: 0.25, z: 273.81}
+  usePosition: 1
   resetPosition: 0
 --- !u!1001 &1535170536
 Prefab:
@@ -54848,6 +55014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1604746339
 Prefab:
@@ -55436,6 +55604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 4ea8f8d8f0466b74aa244a66e8cdaf3c, type: 3}
   scale: {x: 4.947235, y: 4.947235, z: 4.947235}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1623671748
 Prefab:
@@ -55679,7 +55849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 126292, guid: 82d1c84489ad954439fa97896b95e0be, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7860973, y: 0.7860973, z: 0.7860973}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1631041520
 Prefab:
@@ -55776,6 +55948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100472, guid: 1480298b6c0163e44812c56f2b315ae1, type: 3}
   scale: {x: 4.976669, y: 4.976669, z: 4.976669}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1632978762
 GameObject:
@@ -56032,7 +56206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 576d5af441b0737449659393bc793e45, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7502144, y: 0.7502144, z: 0.7502144}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1636609802
 Prefab:
@@ -56253,6 +56429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d7e3a777548016146813c87a8ad7884d, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1644862799
 Prefab:
@@ -56765,6 +56943,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c837fd1c8c07e274e8acfb2f082e50a3, type: 3}
   scale: {x: 0.7917443, y: 0.7917443, z: 0.7917443}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &1659065413
 GameObject:
@@ -56986,6 +57166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5c0a896f2dd12874f9709aa89db6cd71, type: 3}
   scale: {x: 0.7290343, y: 0.7290343, z: 0.7290343}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1660414902
 Prefab:
@@ -57292,6 +57474,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 5f867bc8cd07e9547855262c9a0b8e37, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1675256487
 Prefab:
@@ -57449,7 +57633,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: be3a496173ca5f440ac8c40de28034ac, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7437952, y: 0.7437952, z: 0.7437952}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1683343753
 Prefab:
@@ -58377,6 +58563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1716759146
 Prefab:
@@ -60466,6 +60654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 79b8d456f113fbc4d8a72d0226e1c773, type: 3}
   scale: {x: 0.7400479, y: 0.7400479, z: 0.7400479}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1765898872
 Prefab:
@@ -63322,6 +63512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 138734, guid: 50d44012ec4134d439babe1ac44bfe2a, type: 2}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1844099688
 Prefab:
@@ -63817,7 +64009,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: da7b8d5ef3df0244280f1fcd86d5c38c, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7332689, y: 0.7332689, z: 0.7332689}
+  newPosition: {x: 222.18, y: 0.25, z: 387.38}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1867998908
 Prefab:
@@ -65784,6 +65978,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 1e4ea736ceb3e1540916aba0fa01c7d0, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1942549713
 Prefab:
@@ -66541,6 +66737,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 98533f7a953b7e14591cab778c4be87b, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 169.95, y: -0.07, z: 259.7033}
+  usePosition: 1
   resetPosition: 0
 --- !u!1001 &1965172477
 Prefab:
@@ -66699,6 +66897,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: b6a50aacb07d3924baf83467dc19291b, type: 3}
   scale: {x: 1.546908, y: 1.546908, z: 1.546908}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1966869933
 Prefab:
@@ -66939,6 +67139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d59e93c05a194774b8827d5a1fe67572, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &1974095324
 Prefab:
@@ -67018,7 +67220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100500, guid: a7c6479dccabe534487e67eae398e979, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.594997, y: 0.594997, z: 0.594997}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!64 &1978744663
 MeshCollider:
@@ -67236,7 +67440,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c219ca79b5ad3094db472078e92ec7ea, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.7783049, y: 0.7783049, z: 0.7783049}
+  newPosition: {x: 215.32, y: 0.25, z: 284.63}
+  usePosition: 1
   resetPosition: 0
 --- !u!1001 &1994066841
 Prefab:
@@ -67841,6 +68047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: c1bbbdf7553947a4d921a5f6da216f30, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2011986295
 Prefab:
@@ -68181,6 +68389,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 3c8ca1ca5f7151647ac039649a74c7d6, type: 3}
   scale: {x: 1.360771, y: 1.360771, z: 1.360771}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2015779194
 Prefab:
@@ -68261,6 +68471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 140470, guid: 7ddc6c8ced109174eb7ce590d165c0f7, type: 2}
   scale: {x: 1.100435, y: 1.100435, z: 1.100435}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2019791949
 Prefab:
@@ -68509,6 +68721,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 143426, guid: 5097e38f9f772244494348814c6ca8dd, type: 2}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2028171317
 Prefab:
@@ -68795,6 +69009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d131a48bf6950f84ca711ca6616a333a, type: 3}
   scale: {x: 1, y: 1, z: 1}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2040554980
 Prefab:
@@ -69201,6 +69417,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &2048793330 stripped
 GameObject:
@@ -69255,6 +69473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &2051288290
 GameObject:
@@ -70076,6 +70296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 443018affb7972d40aba588c3b3ec020, type: 3}
   scale: {x: 0.6, y: 0.6, z: 0.6}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1 &2076827844
 GameObject:
@@ -70350,6 +70572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: fc168c94fe304ef48b0631baee5e2e3e, type: 3}
   scale: {x: 0.9385937, y: 0.9385937, z: 0.9385937}
+  newPosition: {x: 0, y: 0, z: 0}
+  usePosition: 0
   resetPosition: 0
 --- !u!1001 &2083664953
 Prefab:

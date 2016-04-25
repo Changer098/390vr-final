@@ -30,3 +30,29 @@ math: 0.6556451
 lawson: 0.9385937
 haas: 0.7290343
 armory: 0.695835
+
+fountain: 0.3001043
+physics: 1.243758
+wang: 1.055925
+jnsn: 0.7437952
+hnly: 0.4539781
+fowler: 
+bell tower: 0.594997
+krach: 0.7502144
+wdc: 0.7860973
+matthews: 0.7783049 (215.32,0.25,284.63)
+john purdue: 0.7332689 (222.18,0.25,287.38)
+beering: 0.7224397 (214.88,0.25,273.81)
+lily: 1.459301
+smth: //rotated 90 about x
+brown: 1 (169.95, -0.07, 259.7033)
+
+gris: 0.6035264
+EE: 1.195437 (167.79,0,230.88)
+corec: 2.129353
+aquatic: 1.893805
+trec: 1.098794
+westwood: 0.8503535
+
+
+get rid of fowler

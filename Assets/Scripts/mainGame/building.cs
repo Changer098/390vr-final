@@ -21,6 +21,8 @@ public class building : MonoBehaviour, destructable {
     int weapon4HitCount = 0;
     int destructionBit;                             //How many points we gain for hit
     public Vector3 scale;
+    public Vector3 newPosition;
+    public bool usePosition;
     bool debug = true;
     bool DontGenerate = false;
     public bool resetPosition = false;
@@ -54,7 +56,12 @@ public class building : MonoBehaviour, destructable {
         rotation.x = 0;
         destructMesh = (GameObject)Instantiate(DM_prefab, gameObject.transform.position, QuanternionHelper.Euler(rotation.x, rotation.y, rotation.z));
         destructMesh.transform.localScale = scale;
-        destructMesh.transform.position = gameObject.transform.position;
+        if (usePosition) {
+            destructMesh.transform.position = newPosition;
+        }
+        else {
+            destructMesh.transform.position = gameObject.transform.position;
+        }
         Material[] materials = gameObject.GetComponent<Renderer>().materials;
         if (debug) {
             //Debug mode, so don't generate colliders or anything of the sort
