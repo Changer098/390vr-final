@@ -33,7 +33,7 @@ public class HUDInfo : MonoBehaviour {
         AddTrigger(XboxAxis.RightTrigger, "laserFire", 1f, 10, HUDCanvas.transform.Find("Right Trigger").gameObject);
         AddTrigger(XboxAxis.LeftTrigger, "abduct", 0.5f, 300, HUDCanvas.transform.Find("Left Trigger").gameObject);
     }
-    public static ArrayList buttonList = new ArrayList(6);
+    public static ArrayList buttonList = null;
 
     public static void AddTrigger(XboxAxis axis, string weaponName, float refreshTime, int ammo, GameObject gameObj) {
         //Set btnData and add it to the list
@@ -91,6 +91,7 @@ public class HUDInfo : MonoBehaviour {
                     return tmp.isAble;
             }
         }
+        Debug.Log("Couldn't find, returning false");
         return false;
     }
     public static bool getAble(XboxAxis axis) {
@@ -101,6 +102,7 @@ public class HUDInfo : MonoBehaviour {
                     return tmp.isAble;
                 }
             }
+        Debug.Log("Couldn't find, returning false");
         return false;
     }
     public static int setAmmo(XboxKey key, int ammo) {

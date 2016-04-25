@@ -48,7 +48,7 @@ public class BeamCollision : MonoBehaviour {
                 //generate collision data
                 if (hit.collider.gameObject.layer == 10) {
                     Debug.Log("Hit building");
-                    hit.collider.gameObject.GetComponent<building>().CollisionFaker(this.GetComponent<lazerBullet>());
+                    hit.collider.gameObject.GetComponent<destructable>().CollisionFaker(this.GetComponent<lazerBullet>());
                 }
                 else {
                     Debug.Log("Hit " + hit.collider.name + ", on layer: " + hit.collider.gameObject.layer);

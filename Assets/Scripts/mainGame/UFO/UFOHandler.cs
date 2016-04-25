@@ -22,10 +22,15 @@ public class UFOHandler : MonoBehaviour {
     public BeamParam ourBeamParam;              //The param of the first instantiated beam (Right Trigger)
     public BeamParam secondBeamParam;           //The param of the second instantiated beam (A Btn)
     public BeamParam constBeamParam;            //The param of the third instantiated, first constant beam (B Btn)
-    public GameObject fireLocation;             //The location for the first beam and a beam on A btn
+    public BeamParam surgeBeamParam;            //The param of the surgeBeam (Y Btn)
+    public GameObject fireLocation;             //The location for the beam created by Right Trigger
     public GameObject fireLocation2;            //The location of the second beam created on A btn
+    public GameObject fireLocation3;            //The location of the constBeam shot
     public float distanceThreshold;             //Value that determines how high the UFO can go
+    public GameObject surgeShot;                //The independence day gun
 
+    public AudioSource lazerFireSource;
+    public AudioSource constLazerSource;
     private GameObject instantiatedTarget;
     private hitTarget targetScript;
     RaycastHit rayHit;
@@ -41,7 +46,7 @@ public class UFOHandler : MonoBehaviour {
 
     bool canFireRight = true;
 
-    public bool UnlockAll = true;
+    public bool UnlockAll = false;
 
     //public Vector3 PrintingIsDumb;
 
@@ -215,6 +220,7 @@ public class UFOHandler : MonoBehaviour {
         Debug.Log("rigidBody is free");
     }
     public void fireA() {
+        Debug.Log("A able: " + HUDInfo.getAble(XboxKey.A) + ", canFireA: " + canFireA);
         if (HUDInfo.getAble(XboxKey.A) && canFireA) {
             Debug.Log("Firing A!");
             int ammoCount = HUDInfo.getAmmo(XboxKey.A);
@@ -278,6 +284,7 @@ public class UFOHandler : MonoBehaviour {
                 s1.transform.LookAt(rayHit.point);
                 s1.GetComponent<BeamParam>().SetBeamParam(ourBeamParam);
                 s1.AddComponent<lazerBullet>().setType(0);
+                lazerFireSource.Play();
 
 
                 //instantiatedRigid.AddForceAtPosition(rayHit.point * instantiated.GetComponent<bullet>().getFireForce(), transform.forward);
@@ -321,8 +328,21 @@ public class UFOHandler : MonoBehaviour {
         bool justSet = false;
         while (true) {
             if (keepAbductAlive) {
+                //abducting
                 abductRays.SetActive(true);
-                yield return new WaitForSeconds(0.1f);
+                Ray rayfire = new Ray(transform.position, Vector3.down);
+                RaycastHit abductHit;
+                Debug.DrawRay(transform.position, Vector3.down);
+                if (Physics.Raycast(rayfire, out abductHit, distanceThreshold)) {
+                    if (abductHit.collider.gameObject.layer == 10) {
+                        //hit a building, do abduct stuff
+                        Debug.Log("hit building with abducter: " + abductHit.collider.name);
+                        //do citizen abducting
+                        abductHit.collider.GetComponent<destructable>().abductCitizen();
+                    }
+                }
+
+                yield return new WaitForSeconds(0.2f);
                 keepAbductAlive = false;
                 justSet = true;
             }
@@ -342,17 +362,22 @@ public class UFOHandler : MonoBehaviour {
             if (keepConstBeamAlive) {
                 //do instantiation and such
                 if (beam == null) {
-                    beam = (GameObject)Instantiate(constBeam, fireLocation.transform.position, fireLocation.transform.rotation);
+                    beam = (GameObject)Instantiate(constBeam, fireLocation3.transform.position, fireLocation3.transform.rotation);
                     beam.transform.LookAt(rayHit.point);
+                    beam.transform.SetParent(transform);
                     beam.GetComponent<BeamParam>().SetBeamParam(constBeamParam);
                     lazerBullet lazBull = beam.AddComponent<lazerBullet>();
                     lazBull.setType(2);
                     beam.GetComponent<BeamParam>().bEnd = false;
+                    constLazerSource.Play();
+                    constLazerSource.loop = true;
                 }
                 else {
                     beam.SetActive(true);
-                    beam.transform.position = fireLocation.transform.position;
+                    //beam.transform.position = fireLocation.transform.position;
+                    beam.transform.LookAt(rayHit.point);
                     beam.GetComponent<BeamParam>().bEnd = false;
+                    if (!constLazerSource.isPlaying) constLazerSource.Play();
                 }
                 yield return new WaitForSeconds(0.1f);
                 keepConstBeamAlive = false;
@@ -363,6 +388,7 @@ public class UFOHandler : MonoBehaviour {
                 if (beam != null) {
                     beam.GetComponent<BeamParam>().bEnd = true;
                     beam.SetActive(false);
+                    constLazerSource.Stop();
                 }
                 yield return new WaitForSeconds(0.1f);
             }
@@ -397,6 +423,7 @@ public class UFOHandler : MonoBehaviour {
         s2.transform.LookAt(rayHit.point);
         s2.GetComponent<BeamParam>().SetBeamParam(secondBeamParam);
         s2.AddComponent<lazerBullet>().setType(1);
+        lazerFireSource.Play();
 
 
         float waitTime = 0.5f;

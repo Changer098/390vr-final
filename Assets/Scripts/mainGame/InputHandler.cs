@@ -7,21 +7,31 @@ using System.Collections;
 public class InputHandler : MonoBehaviour {
 
     public GameObject pauseCanvas;
+    public GameObject endCanvas;
     public GameObject pureBlackObject;
     public Button calibrateBtn;
     public Button quitBtn;
     public Button returnBtn;
+
+    public Button calibrateEndBtn;
+    public Button quitEndBtn;
+    public Button replayBtn;
+
     public Color SelectColor;                                   //Selection Color of UI Elements
     public GameObject UFOobject;
 
     public bool gameIsPaused = false;
+    public bool gameIsEnded = false;
     private bool canMove = true;
     private bool canPause = true;
     private bool transitioning = false;
     private UFOHandler ufoHandler;
 
-    private Hashtable colorTable = new Hashtable();  //original colors
-    private int index = 0;
+    private Hashtable colorTable = new Hashtable();         //original colors
+    private Hashtable colorTableEnd = new Hashtable();      //original colors for the end Menu
+    public int index = 0;
+    public int endIndex = 0;
+    private bool wonGame;
 
     //Input mapping
     InputKey ABtn = new InputKey("A Btn", KeyCode.A, XboxKey.A);
@@ -40,9 +50,14 @@ public class InputHandler : MonoBehaviour {
     InputAxis RightTrigger = new InputAxis("RightTrigger", "", XboxAxis.RightTrigger);
     // Use this for initialization
     void Start() {
+        Time.timeScale = 1;
         colorTable.Add("calibrateBtn", calibrateBtn.colors.normalColor);
         colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("returnBtn", returnBtn.colors.normalColor);
+        colorTableEnd.Add("calibrateEndBtn", calibrateEndBtn.colors.normalColor);
+        colorTableEnd.Add("quitEndBtn", quitEndBtn.colors.normalColor);
+        colorTableEnd.Add("replayBtn", replayBtn.colors.normalColor);
+
         ufoHandler = UFOobject.GetComponent<UFOHandler>();
         HUDInfo.addTriggers();
     }
@@ -53,7 +68,8 @@ public class InputHandler : MonoBehaviour {
         if (gameIsPaused && !transitioning) {
             //handle pause navigation, literally just up and down
             //handle escape via pause buttons
-            if (managerMain.GetKeyDown(GuideBtn) || managerMain.GetKeyDown(BackBtn) || managerMain.GetKeyDown(StartBtn)) {
+            //Don't use guide button because windows 10
+            if (managerMain.GetKeyDown(BackBtn) || managerMain.GetKeyDown(StartBtn)) {
                 Debug.Log("pressed pause button");
                 hidePause();
             }
@@ -107,8 +123,59 @@ public class InputHandler : MonoBehaviour {
                 }
             }
         }
+        else if (!transitioning && gameIsEnded) {
+            //handle navigation
+            if (managerMain.GetAxis(LeftUp) < -0.5f && canMove) {
+                Debug.Log("Left Stick Up");
+                //left thumb stick went up
+                switch (endIndex) {
+                    case 0:
+                        endIndex++;
+                        handleColors(endIndex, true);
+                        break;
+                    case 1:
+                        endIndex++;
+                        handleColors(endIndex, true);
+                        break;
+                }
+                StartCoroutine(moveWait());
+            }
+            if (managerMain.GetAxis(LeftUp) > 0.5f && canMove) {
+                Debug.Log("Left Stick Down");
+                //left thumb stick went down
+                switch (endIndex) {
+                    case 1:
+                        endIndex--;
+                        handleColors(endIndex, true);
+                        break;
+                    case 2:
+                        endIndex--;
+                        handleColors(endIndex, true);
+                        break;
+                }
+                StartCoroutine(moveWait());
+            }
+            if (managerMain.GetKeyDown(ABtn)) {
+                Debug.Log("Clicked Select Button");
+                switch (endIndex) {
+                    case 0:
+                        //quitbtn
+                        fromMainGame.isFromMainGame = true;
+                        StartCoroutine(screenFadeOutAndLoad());
+                        break;
+                    case 1:
+                        //calibrateBtn
+                        UnityEngine.VR.InputTracking.Recenter();
+                        break;
+                    case 2:
+                        //ReplayBtn
+                        StartCoroutine(reload());
+                        break;
+                }
+            }
+        }
         else if (!transitioning) {
-            if ((managerMain.GetKeyDown(GuideBtn) || managerMain.GetKeyDown(BackBtn) || managerMain.GetKeyDown(StartBtn)) && canPause) {
+            if ((managerMain.GetKeyDown(BackBtn) || managerMain.GetKeyDown(StartBtn)) && canPause) {
                 Debug.Log("Showing pause");
                 showPause();
             }
@@ -150,6 +217,14 @@ public class InputHandler : MonoBehaviour {
         pauseCanvas.SetActive(true);
         Time.timeScale = 0.01f;
         handleColors(0);
+    }
+    public void endGame(bool won) {
+        wonGame = won;
+        gameIsEnded = true;
+        endCanvas.GetComponent<endMenu>().status(won, HUDInfo.destruction);
+        endCanvas.SetActive(true);
+        Time.timeScale = 0.01f;
+        handleColors(0, false);
     }
     void handleColors(int index) {
         ColorBlock colors;
@@ -197,6 +272,50 @@ public class InputHandler : MonoBehaviour {
                 break;
         }
     }
+    void handleColors(int index, bool doNothing) {
+        ColorBlock colors;
+        switch (endIndex) {
+            case 0:
+                //quitBtn
+                colors = calibrateEndBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["calibrateEndBtn"];
+                calibrateEndBtn.colors = colors;
+                colors = replayBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["replayBtn"];
+                replayBtn.colors = colors;
+                //set quit to selectColor
+                colors = quitEndBtn.colors;
+                colors.normalColor = SelectColor;
+                quitEndBtn.colors = colors;
+                break;
+            case 1:
+                //calibrateBtn                
+                colors = quitEndBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["quitEndBtn"];
+                quitEndBtn.colors = colors;
+                colors = replayBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["replayBtn"];
+                replayBtn.colors = colors;
+                //set calibrate to selectColor
+                colors = calibrateEndBtn.colors;
+                colors.normalColor = SelectColor;
+                calibrateEndBtn.colors = colors;
+                break;
+            case 2:
+                //returnBtn
+                colors = calibrateEndBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["calibrateEndBtn"];
+                calibrateEndBtn.colors = colors;
+                colors = quitEndBtn.colors;
+                colors.normalColor = (Color)colorTableEnd["quitEndBtn"];
+                quitEndBtn.colors = colors;
+                //set return to selectColor
+                colors = replayBtn.colors;
+                colors.normalColor = SelectColor;
+                replayBtn.colors = colors;
+                break;
+        }
+    }
     IEnumerator moveWait() {
         canMove = false;
         //yield return new WaitForSeconds(0.35f);
@@ -241,5 +360,24 @@ public class InputHandler : MonoBehaviour {
         Time.timeScale = 1;
         loader.allowSceneActivation = true;
         Debug.Log("load progress: " + loader.progress);
+    }
+    IEnumerator reload() {
+        Renderer render = pureBlackObject.GetComponent<Renderer>();
+        pureBlackObject.SetActive(true);
+
+        float waitTime = 0.025f;
+        float opacity = 0;
+        while (opacity < 1) {
+            Color c = render.material.color;
+            opacity = opacity + ((float)10 / (float)255);
+            c.a = opacity;
+            render.material.color = c;
+            float start = Time.unscaledTime;
+            while (Time.unscaledTime < start + waitTime) {
+                yield return null;
+            }
+        }
+        Debug.Log("screenFade finished");
+        SceneManager.LoadScene(2);
     }
 }

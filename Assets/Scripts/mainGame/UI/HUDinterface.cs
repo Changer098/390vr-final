@@ -10,6 +10,7 @@ public class HUDinterface : MonoBehaviour {
     public Image healthProgress;
     public Image destructProgress;
     public int citizenWorth;
+    public int destructionAmount;
     //public GameObject UFO;
     // Update is called once per frame
     void Awake() {
@@ -23,5 +24,8 @@ public class HUDinterface : MonoBehaviour {
         GameObject UFO = GameObject.Find("UFO");
         HUDInfo.ufoHandler = UFO.GetComponent<UFOHandler>();
         HUDInfo.citizenWorth = citizenWorth;
+    }
+    void Update() {
+        destructionAmount = HUDInfo.destruction;
     }
 }

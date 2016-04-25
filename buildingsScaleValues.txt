@@ -1,2 +1,32 @@
 University: 0.6
 Stone: 0.6977794
+Recitation: 0.7400479
+Stanley Coulter: 0.4826228
+Wetherill: 0.6579994
+CL50: 0.7917443
+Psych: 0.5225422
+Stewart: 1.288662
+AGAD: 1
+peen: 1.100435
+krannert: 1.488069
+rawls: 0.9052129
+pmu: 1.085127 (163.49, 0.25, 279.44)
+enad: 0.9128228
+nuclear: 0.7259397
+knoy: 1.546908
+msee: 1
+schleman: 0.6976543
+forney: 0.5895058
+hampton: 0.7490141
+pharmacy: 0.5517253
+push: 0.6007791
+armstrong: 1.360771
+mackey: 4.976669
+moll: 1
+rossAde: 4.947235
+thirdStreet: 0.7388392
+elliot: 1.210417
+math: 0.6556451
+lawson: 0.9385937
+haas: 0.7290343
+armory: 0.695835

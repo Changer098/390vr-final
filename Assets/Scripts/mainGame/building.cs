@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class building : MonoBehaviour {
+public class building : MonoBehaviour, destructable {
 
     public GameObject DM_prefab;
     private GameObject destructMesh;
@@ -21,9 +21,10 @@ public class building : MonoBehaviour {
     int weapon4HitCount = 0;
     int destructionBit;                             //How many points we gain for hit
     public Vector3 scale;
-    bool debug = false;
+    bool debug = true;
     bool DontGenerate = false;
     public bool resetPosition = false;
+    bool isDestroyed = false;
 	// Use this for initialization
 	void Start () {
         citizenCount = Random.Range(0, 200);
@@ -44,7 +45,7 @@ public class building : MonoBehaviour {
         if (debug && resetPosition && destructMesh != null) {
             resetPosition = false;
             destructMesh.transform.position = gameObject.transform.position;
-            Debug.Log("X: " + transform.localScale.x + ", Y: " + transform.localScale.y + ", Z: " + transform.localScale.z);
+            Debug.Log("X: " + destructMesh.transform.localScale.x + ", Y: " + destructMesh.transform.localScale.y + ", Z: " + destructMesh.transform.localScale.z);
         }
     }
 
@@ -54,6 +55,7 @@ public class building : MonoBehaviour {
         destructMesh = (GameObject)Instantiate(DM_prefab, gameObject.transform.position, QuanternionHelper.Euler(rotation.x, rotation.y, rotation.z));
         destructMesh.transform.localScale = scale;
         destructMesh.transform.position = gameObject.transform.position;
+        Material[] materials = gameObject.GetComponent<Renderer>().materials;
         if (debug) {
             //Debug mode, so don't generate colliders or anything of the sort
             yield break;
@@ -68,6 +70,7 @@ public class building : MonoBehaviour {
                 continue;
             }
             else {
+                childT.GetComponent<Renderer>().materials = materials;
                 MeshCollider collider = childT.gameObject.AddComponent<MeshCollider>();
                 Rigidbody rigid = childT.gameObject.AddComponent<Rigidbody>();
                 collider.convex = true;
@@ -151,11 +154,13 @@ public class building : MonoBehaviour {
             case 0:
                 //Right Trigger
                 rightBulletHitCount++;
-                if (rightBulletHitCount >= rightHitDestructionAmount) {
+                if (rightBulletHitCount >= rightHitDestructionAmount && !isDestroyed) {
                     Debug.Log("Destroying the building: " + name);
                     destructMesh.SetActive(true);
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
+                    AudioDB.destroyBuilding.Play();
+                    isDestroyed = true;
                     killCitizens();
                 }
                 else {
@@ -165,12 +170,14 @@ public class building : MonoBehaviour {
             case 1:
                 //A weapon
                 weapon1HitCount++;
-                Debug.Log("A weapon hit, count: " + weapon1HitCount);
-                if (weapon1HitCount >= weapon1HitDestructionAmount) {
+                //Debug.Log("A weapon hit, count: " + weapon1HitCount);
+                if (weapon1HitCount >= weapon1HitDestructionAmount && !isDestroyed) {
                     Debug.Log("Destroying the building: " + name);
                     destructMesh.SetActive(true);
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
+                    isDestroyed = true;
+                    AudioDB.destroyBuilding.Play();
                     killCitizens();
                 }
                 else {
@@ -180,12 +187,14 @@ public class building : MonoBehaviour {
             case 2:
                 //B weapon
                 weapon2HitCount++;
-                Debug.Log("B weapon hit, count: " + weapon2HitCount);
-                if (weapon2HitCount >= weapon2HitDestructionAmount) {
+                //Debug.Log("B weapon hit, count: " + weapon2HitCount);
+                if (weapon2HitCount >= weapon2HitDestructionAmount && !isDestroyed) {
                     Debug.Log("Destroying the building: " + name);
                     destructMesh.SetActive(true);
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
+                    isDestroyed = true;
+                    AudioDB.destroyBuilding.Play();
                     killCitizens();
                 }
                 else {
@@ -205,6 +214,16 @@ public class building : MonoBehaviour {
     //adds points for each citizen kill
     private void killCitizens() {
         HUDInfo.UpdateDestruction(citizenCount * HUDInfo.citizenWorth);
+    }
+    public void abductCitizen() {
+        if (citizenCount >= 2) {
+            HUDInfo.UpdateDestruction(HUDInfo.citizenWorth * 4);
+            citizenCount = citizenCount - 2;
+        }
+        else if (citizenCount == 1) {
+            HUDInfo.UpdateDestruction(HUDInfo.citizenWorth * 2);
+            citizenCount = citizenCount - 1;
+        }
     }
 
     public int getCitizenCount() { return this.citizenCount; }
