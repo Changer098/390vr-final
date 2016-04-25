@@ -23,7 +23,7 @@ public class building : MonoBehaviour, destructable {
     public Vector3 scale;
     public Vector3 newPosition;
     public bool usePosition;
-    bool debug = true;
+    bool debug = false;
     bool DontGenerate = false;
     public bool resetPosition = false;
     bool isDestroyed = false;
