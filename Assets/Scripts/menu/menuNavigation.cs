@@ -16,11 +16,7 @@ public class menuNavigation : MonoBehaviour {
     public Button playBtn;
     public Button quitBtn;
     public Button calibrateBtn;
-
-    //settingsCanvas elements
-    public Button backBtn;
-    public Toggle controllerToggle;
-    public Toggle VRToggle;
+    public Text xboxConnected;
 
     public Color SelectColor;                                   //Selection Color of UI Elements
     public GameObject pureBlackObject;
@@ -28,6 +24,7 @@ public class menuNavigation : MonoBehaviour {
 
     private bool transitioning = false;                         //whether or not the screen is transitioning to another canvas or fading out. Disallows input
     bool canMove = true;                                        //Used by moveWait() to prevent multiple controller inputs
+    bool hasController = true;                                 //Used by xboxDaemon to determine whether an xbox controller is connected
 
     private Hashtable colorTable = new Hashtable();  //original colors
 	void Start () {
@@ -38,9 +35,6 @@ public class menuNavigation : MonoBehaviour {
         colorTable.Add("playBtn", playBtn.colors.normalColor);
         colorTable.Add("quitBtn", quitBtn.colors.normalColor);
         colorTable.Add("calibrateBtn", calibrateBtn.colors.normalColor);
-        colorTable.Add("backBtn", backBtn.colors.normalColor);
-        colorTable.Add("controllerToggle", controllerToggle.colors.normalColor);
-        colorTable.Add("VRToggle", VRToggle.colors.normalColor);
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         Color c = render.material.color;
         c.a = 0;
@@ -48,12 +42,13 @@ public class menuNavigation : MonoBehaviour {
 
         //DontDestroyOnLoad(OVRCameraRig);
         //DontDestroyOnLoad(pureBlackObject);
-        selectObject();        
+        selectObject();
+        //StartCoroutine(xboxDaemon());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!transitioning) {
+        if (!transitioning && hasController) {
             if (managerMain.GetKeyDown(keyBinding.buttons[0])) {
                 //select button pressed
                 if (index != -1) {
@@ -306,6 +301,19 @@ public class menuNavigation : MonoBehaviour {
         }
         Debug.Log("screenFade finished");
         SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+    IEnumerator xboxDaemon() {
+        while (true) {
+            if (!managerMain.currentInput.isXbox) {
+                xboxConnected.gameObject.SetActive(true);
+                hasController = false;
+            }
+            else {
+                xboxConnected.gameObject.SetActive(false);
+                hasController = true;
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 
 }
