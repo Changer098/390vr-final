@@ -27,6 +27,7 @@ public class westWood : MonoBehaviour, destructable {
     bool DontGenerate = false;
     public bool resetPosition = false;
     bool isDestroyed = false;
+    public GameObject InputManager;
 	// Use this for initialization
 	void Start () {
         citizenCount = Random.Range(0, 200);
@@ -169,6 +170,7 @@ public class westWood : MonoBehaviour, destructable {
                     HUDInfo.UpdateDestruction(destructionAmount);
                     AudioDB.destroyBuilding.Play();
                     isDestroyed = true;
+                    Destroy();
                     killCitizens();
                 }
                 else {
@@ -185,6 +187,7 @@ public class westWood : MonoBehaviour, destructable {
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
                     isDestroyed = true;
+                    Destroy();
                     AudioDB.destroyBuilding.Play();
                     killCitizens();
                 }
@@ -202,6 +205,7 @@ public class westWood : MonoBehaviour, destructable {
                     GameObject.Destroy(gameObject);
                     HUDInfo.UpdateDestruction(destructionAmount);
                     isDestroyed = true;
+                    Destroy();
                     AudioDB.destroyBuilding.Play();
                     killCitizens();
                 }
@@ -237,7 +241,8 @@ public class westWood : MonoBehaviour, destructable {
     public int getCitizenCount() { return this.citizenCount; }
     void Destroy()
     {
-        GameObject.Find("Input Manager").GetComponent<InputHandler>().endGame(true);
+        InputManager.GetComponent<InputHandler>().endGame(true);
+        Debug.Log("You win!");
     }
     
 }

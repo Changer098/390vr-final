@@ -56,6 +56,8 @@ public class UFOHandler : MonoBehaviour {
     private bool keepConstBeamAlive = false;
     private GameObject beam = null;
 
+    public InputHandler inputHandler;
+
     void Start () {
         moveCamera.isAlive = true;
         rigid = GetComponent<Rigidbody>();
@@ -208,7 +210,7 @@ public class UFOHandler : MonoBehaviour {
     }
     public void fireA() {
         Debug.Log("A able: " + HUDInfo.getAble(XboxKey.A) + ", canFireA: " + canFireA);
-        if (HUDInfo.getAble(XboxKey.A) && canFireA) {
+        if (HUDInfo.getAble(XboxKey.A) && canFireA && !inputHandler.gameIsEnded) {
             Debug.Log("Firing A!");
             int ammoCount = HUDInfo.getAmmo(XboxKey.A);
             if (ammoCount > 0) {
@@ -232,7 +234,7 @@ public class UFOHandler : MonoBehaviour {
         }
     }
     public void fireB() {
-        if (HUDInfo.getAble(XboxKey.B) && canFireB) {
+        if (HUDInfo.getAble(XboxKey.B) && canFireB && !inputHandler.gameIsEnded) {
             Debug.Log("Firing B!");
             int ammoCount = HUDInfo.getAmmo(XboxKey.B);
 
@@ -256,7 +258,7 @@ public class UFOHandler : MonoBehaviour {
 
     }
     public void rightTrigger() {
-        if (HUDInfo.getAble(XboxAxis.RightTrigger) && canFireRight) {
+        if (HUDInfo.getAble(XboxAxis.RightTrigger) && canFireRight && !inputHandler.gameIsEnded) {
             Debug.Log("Firing Right Trigger!");
             int ammoCount = HUDInfo.getAmmo(XboxAxis.RightTrigger);
             
@@ -294,7 +296,7 @@ public class UFOHandler : MonoBehaviour {
         }
     }
     public void leftTrigger() {
-        if (HUDInfo.getAble(XboxAxis.LeftTrigger)) {
+        if (HUDInfo.getAble(XboxAxis.LeftTrigger) && !inputHandler.gameIsEnded) {
             Debug.Log("Firing LeftTrigger!");
             int ammoCount = HUDInfo.getAmmo(XboxAxis.LeftTrigger);
 
@@ -343,7 +345,7 @@ public class UFOHandler : MonoBehaviour {
                 keepAbductAlive = false;
                 justSet = true;
             }
-            else if (!keepAbductAlive && !justSet) {
+            else if (!keepAbductAlive && !justSet || inputHandler.gameIsEnded) {
                 abductRays.SetActive(false);
                 yield return new WaitForSeconds(0.1f);
             }
@@ -380,7 +382,7 @@ public class UFOHandler : MonoBehaviour {
                 keepConstBeamAlive = false;
                 justSet = true;
             }
-            else if (!keepConstBeamAlive && !justSet) {
+            else if (!keepConstBeamAlive && !justSet || inputHandler.gameIsEnded) {
                 //turn off and such
                 if (beam != null) {
                     beam.GetComponent<BeamParam>().bEnd = true;
@@ -429,5 +431,10 @@ public class UFOHandler : MonoBehaviour {
             yield return null;
         }
         canFireA = true;
+    }
+    public void quitConstBeamer() {
+        beam.GetComponent<BeamParam>().bEnd = true;
+        beam.SetActive(false);
+        constLazerSource.Stop();
     }
 }

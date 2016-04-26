@@ -26,6 +26,7 @@ public class building : MonoBehaviour, destructable {
     bool debug = false;
     bool DontGenerate = false;
     public bool resetPosition = false;
+    public fountainQuit fountainQuitScript;
     bool isDestroyed = false;
 	// Use this for initialization
 	void Start () {
@@ -36,8 +37,8 @@ public class building : MonoBehaviour, destructable {
         //assign random values to fields
         destructionAmount = Random.Range(100, 500);
         rightHitDestructionAmount = Random.Range(5, 12);
-        weapon1HitCount = Random.Range(5, 15);
-        weapon2HitCount = Random.Range(25, 75);
+        weapon1HitDestructionAmount = Random.Range(5, 15);
+        weapon2HitDestructionAmount = Random.Range(25, 75);
 
 
         destructionBit = (int)(0.1f * destructionAmount); 
@@ -72,7 +73,7 @@ public class building : MonoBehaviour, destructable {
         int childCount = destructMesh.transform.childCount;
         for (int i = 0; i < childCount; i++) {
             Transform childT = destructMesh.transform.GetChild(i);
-            if (childT.name == "Plane") {
+            if (childT.name == "Plane" || childT.name == "Circle") {
                 childT.gameObject.SetActive(false);
                 Debug.Log("Skipping on: " + gameObject.name);
                 continue;
@@ -169,6 +170,7 @@ public class building : MonoBehaviour, destructable {
                     HUDInfo.UpdateDestruction(destructionAmount);
                     AudioDB.destroyBuilding.Play();
                     isDestroyed = true;
+                    if (fountainQuitScript != null) fountainQuitScript.quitParticles();
                     killCitizens();
                 }
                 else {
@@ -186,6 +188,7 @@ public class building : MonoBehaviour, destructable {
                     HUDInfo.UpdateDestruction(destructionAmount);
                     isDestroyed = true;
                     AudioDB.destroyBuilding.Play();
+                    if (fountainQuitScript != null) fountainQuitScript.quitParticles();
                     killCitizens();
                 }
                 else {
@@ -203,6 +206,7 @@ public class building : MonoBehaviour, destructable {
                     HUDInfo.UpdateDestruction(destructionAmount);
                     isDestroyed = true;
                     AudioDB.destroyBuilding.Play();
+                    if (fountainQuitScript != null) fountainQuitScript.quitParticles();
                     killCitizens();
                 }
                 else {

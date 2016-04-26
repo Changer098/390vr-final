@@ -1351,6 +1351,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &43408106
 Prefab:
   m_ObjectHideFlags: 0
@@ -2179,6 +2180,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &63026042
 Prefab:
   m_ObjectHideFlags: 0
@@ -2899,6 +2901,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &87098196
 Prefab:
   m_ObjectHideFlags: 0
@@ -3493,6 +3496,10 @@ Prefab:
       propertyPath: UnlockAll
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11448384, guid: 7125d9111b143964881f004b0e24477c, type: 2}
+      propertyPath: inputHandler
+      value: 
+      objectReference: {fileID: 1922160647}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7125d9111b143964881f004b0e24477c, type: 2}
   m_IsPrefabParent: 0
@@ -5812,10 +5819,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 4b992e6670d86b74dbf8b98da1acdadd, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1.893805, y: 1.893805, z: 1.893805}
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &181851980
 Prefab:
   m_ObjectHideFlags: 0
@@ -7517,6 +7525,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &218213195
 GameObject:
   m_ObjectHideFlags: 0
@@ -7740,6 +7749,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &221676698
 GameObject:
   m_ObjectHideFlags: 0
@@ -12137,6 +12147,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &340814242
 Prefab:
   m_ObjectHideFlags: 0
@@ -14301,6 +14312,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &427481690
 Prefab:
   m_ObjectHideFlags: 0
@@ -14749,6 +14761,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &440905082
 Prefab:
   m_ObjectHideFlags: 0
@@ -14867,6 +14880,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &448186129
 GameObject:
   m_ObjectHideFlags: 0
@@ -15365,6 +15379,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &451148297
 Prefab:
   m_ObjectHideFlags: 0
@@ -16165,6 +16180,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &474549686
 Prefab:
   m_ObjectHideFlags: 0
@@ -16877,6 +16893,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &504504950
 Prefab:
   m_ObjectHideFlags: 0
@@ -18587,6 +18604,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &554108168
 GameObject:
   m_ObjectHideFlags: 0
@@ -18721,6 +18739,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &557125634
 GameObject:
   m_ObjectHideFlags: 0
@@ -19979,6 +19998,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &586529158
 Prefab:
   m_ObjectHideFlags: 0
@@ -20335,6 +20355,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &596266306
 Prefab:
   m_ObjectHideFlags: 0
@@ -21575,6 +21596,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &612767582
 Prefab:
   m_ObjectHideFlags: 0
@@ -21983,6 +22005,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &621375753
 Prefab:
   m_ObjectHideFlags: 0
@@ -23671,6 +23694,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &677294297
 Prefab:
   m_ObjectHideFlags: 0
@@ -24089,6 +24113,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &685268810
 Prefab:
   m_ObjectHideFlags: 0
@@ -25292,6 +25317,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &718550149
 Prefab:
   m_ObjectHideFlags: 0
@@ -25450,6 +25476,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &718576945
 Prefab:
   m_ObjectHideFlags: 0
@@ -25662,6 +25689,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &720284508
 Prefab:
   m_ObjectHideFlags: 0
@@ -26291,6 +26319,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &732210933
 Prefab:
   m_ObjectHideFlags: 0
@@ -29388,10 +29417,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 101466, guid: 3fb24761cb96fb94882515361c82184a, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1.098794, y: 1.098794, z: 1.098794}
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &838218218
 Prefab:
   m_ObjectHideFlags: 0
@@ -32074,6 +32104,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &915975689
 Prefab:
   m_ObjectHideFlags: 0
@@ -34310,6 +34341,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &984541719
 Prefab:
   m_ObjectHideFlags: 0
@@ -35664,6 +35696,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1015864968
 Prefab:
   m_ObjectHideFlags: 0
@@ -36030,6 +36063,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1024767783 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 912eb840e176a9f4bb897f9fe06b35b8, type: 3}
@@ -36568,10 +36602,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 154784, guid: d5bfab24757a48f48b3d04263e601a82, type: 2}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.6035264, y: 0.6035264, z: 0.6035264}
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1048739160
 Prefab:
   m_ObjectHideFlags: 0
@@ -38638,6 +38673,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!20 &1107911294 stripped
 Camera:
   m_PrefabParentObject: {fileID: 2027358, guid: 922b85cadab7af2409da1e63365c7674,
@@ -39421,6 +39457,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1142995670
 GameObject:
   m_ObjectHideFlags: 0
@@ -40490,6 +40527,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1178407323
 Prefab:
   m_ObjectHideFlags: 0
@@ -41032,6 +41070,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1186620082
 Prefab:
   m_ObjectHideFlags: 0
@@ -41420,6 +41459,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1205694792
 Prefab:
   m_ObjectHideFlags: 0
@@ -41814,6 +41854,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1211400553
 Prefab:
   m_ObjectHideFlags: 0
@@ -42178,6 +42219,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1223812902
 GameObject:
   m_ObjectHideFlags: 0
@@ -42598,10 +42640,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: 9564dc734ca42254c91e99809e56d919, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 0.8503535, y: 0.8503535, z: 0.8503535}
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  InputManager: {fileID: 1922160646}
 --- !u!1001 &1234985542
 Prefab:
   m_ObjectHideFlags: 0
@@ -43652,6 +43695,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1253555632
 Prefab:
   m_ObjectHideFlags: 0
@@ -44422,6 +44466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPS: 
+  realFPS: 0
 --- !u!114 &1272817575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44524,6 +44569,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -45699,6 +45745,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1318496916
 Prefab:
   m_ObjectHideFlags: 0
@@ -46658,6 +46705,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -47806,6 +47854,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1379024274
 Prefab:
   m_ObjectHideFlags: 0
@@ -48810,6 +48859,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1409010339
 Prefab:
   m_ObjectHideFlags: 0
@@ -49152,6 +49202,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1412628662
 Prefab:
   m_ObjectHideFlags: 0
@@ -49997,6 +50048,7 @@ MonoBehaviour:
   newPosition: {x: 163.49, y: 0.25, z: 279.44}
   usePosition: 1
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1418943743
 Prefab:
   m_ObjectHideFlags: 0
@@ -50378,6 +50430,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1427448479
 Prefab:
   m_ObjectHideFlags: 0
@@ -51742,6 +51795,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1458311719
 Prefab:
   m_ObjectHideFlags: 0
@@ -52124,6 +52178,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1480587819
 GameObject:
   m_ObjectHideFlags: 0
@@ -52360,6 +52415,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1501380189
 Prefab:
   m_ObjectHideFlags: 0
@@ -54869,6 +54925,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1515585064
 Prefab:
   m_ObjectHideFlags: 0
@@ -55253,6 +55310,31 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 1520799380}
+--- !u!64 &1520799379
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520799377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: c7884c56f35fa884b932f493db800d55, type: 3}
+--- !u!114 &1520799380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520799377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4821b601c94954d9699f22fc707c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fountainParticles: {fileID: 1514591668}
 --- !u!1 &1521325822
 GameObject:
   m_ObjectHideFlags: 0
@@ -56031,6 +56113,7 @@ MonoBehaviour:
   newPosition: {x: 214.88, y: 0.25, z: 273.81}
   usePosition: 1
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1535170536
 Prefab:
   m_ObjectHideFlags: 0
@@ -58261,6 +58344,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1604746339
 Prefab:
   m_ObjectHideFlags: 0
@@ -58867,6 +58951,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1623671748
 Prefab:
   m_ObjectHideFlags: 0
@@ -59145,6 +59230,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1631041520
 Prefab:
   m_ObjectHideFlags: 0
@@ -59243,6 +59329,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1632978762
 GameObject:
   m_ObjectHideFlags: 0
@@ -59502,6 +59589,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1636609802
 Prefab:
   m_ObjectHideFlags: 0
@@ -59720,10 +59808,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d7e3a777548016146813c87a8ad7884d, type: 3}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 2.129353, y: 2.129353, z: 2.129353}
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1644862799
 Prefab:
   m_ObjectHideFlags: 0
@@ -60254,6 +60343,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &1659065413
 GameObject:
   m_ObjectHideFlags: 0
@@ -60477,6 +60567,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1660414902
 Prefab:
   m_ObjectHideFlags: 0
@@ -60801,6 +60892,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1675256487
 Prefab:
   m_ObjectHideFlags: 0
@@ -60961,6 +61053,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1683343753
 Prefab:
   m_ObjectHideFlags: 0
@@ -61954,6 +62047,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1716759146
 Prefab:
   m_ObjectHideFlags: 0
@@ -64161,6 +64255,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1765898872
 Prefab:
   m_ObjectHideFlags: 0
@@ -65181,6 +65276,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -67145,6 +67241,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1844099688
 Prefab:
   m_ObjectHideFlags: 0
@@ -67647,6 +67744,7 @@ MonoBehaviour:
   newPosition: {x: 222.18, y: 0.25, z: 387.38}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1867998908
 Prefab:
   m_ObjectHideFlags: 0
@@ -69282,7 +69380,8 @@ MonoBehaviour:
   gameIsEnded: 0
   index: 0
   endIndex: 0
-  waiterFader: 0
+  waiterFader: 1
+  fpsCounter: {fileID: 1272817574}
 --- !u!114 &1922160648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69696,6 +69795,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1942549713
 Prefab:
   m_ObjectHideFlags: 0
@@ -70487,6 +70587,7 @@ MonoBehaviour:
   newPosition: {x: 169.95, y: -0.07, z: 259.7033}
   usePosition: 1
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1965172477
 Prefab:
   m_ObjectHideFlags: 0
@@ -70647,6 +70748,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1966869933
 Prefab:
   m_ObjectHideFlags: 0
@@ -70885,10 +70987,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DM_prefab: {fileID: 100000, guid: d59e93c05a194774b8827d5a1fe67572, type: 3}
-  scale: {x: 0, y: 0, z: 0}
-  newPosition: {x: 0, y: 0, z: 0}
+  scale: {x: 1.195437, y: 1.195437, z: 1.195437}
+  newPosition: {x: 167.79, y: 0, z: 230.88}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1974095324
 Prefab:
   m_ObjectHideFlags: 0
@@ -70971,6 +71074,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!64 &1978744663
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -71191,6 +71295,7 @@ MonoBehaviour:
   newPosition: {x: 215.32, y: 0.25, z: 284.63}
   usePosition: 1
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &1994066841
 Prefab:
   m_ObjectHideFlags: 0
@@ -71829,6 +71934,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2011986295
 Prefab:
   m_ObjectHideFlags: 0
@@ -72171,6 +72277,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2015779194
 Prefab:
   m_ObjectHideFlags: 0
@@ -72253,6 +72360,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2019791949
 Prefab:
   m_ObjectHideFlags: 0
@@ -72503,6 +72611,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2028171317
 Prefab:
   m_ObjectHideFlags: 0
@@ -72807,6 +72916,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2040554980
 Prefab:
   m_ObjectHideFlags: 0
@@ -73247,6 +73357,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &2048793330 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: e52bf64a5d303b647838d8e3170f5905, type: 3}
@@ -73303,6 +73414,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &2051288290
 GameObject:
   m_ObjectHideFlags: 0
@@ -74142,6 +74254,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1 &2076827844
 GameObject:
   m_ObjectHideFlags: 0
@@ -74418,6 +74531,7 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   usePosition: 0
   resetPosition: 0
+  fountainQuitScript: {fileID: 0}
 --- !u!1001 &2083664953
 Prefab:
   m_ObjectHideFlags: 0

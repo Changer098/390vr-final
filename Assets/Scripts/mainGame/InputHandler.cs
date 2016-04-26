@@ -32,6 +32,7 @@ public class InputHandler : MonoBehaviour {
     public int index = 0;
     public int endIndex = 0;
     public bool waiterFader;
+    public FPSCounter fpsCounter;
     private bool wonGame;
 
     //Input mapping
@@ -59,6 +60,12 @@ public class InputHandler : MonoBehaviour {
         colorTableEnd.Add("calibrateEndBtn", calibrateEndBtn.colors.normalColor);
         colorTableEnd.Add("quitEndBtn", quitEndBtn.colors.normalColor);
         colorTableEnd.Add("replayBtn", replayBtn.colors.normalColor);
+
+        Renderer render = pureBlackObject.GetComponent<Renderer>();
+        pureBlackObject.SetActive(true);
+        Color c = render.material.color;
+        c.a = 1;
+        render.material.color = c;
 
         ufoHandler = UFOobject.GetComponent<UFOHandler>();
         HUDInfo.addTriggers();
@@ -222,6 +229,7 @@ public class InputHandler : MonoBehaviour {
     }
     public void endGame(bool won) {
         wonGame = won;
+        ufoHandler.quitConstBeamer();
         gameIsEnded = true;
         endCanvas.GetComponent<endMenu>().status(won, HUDInfo.destruction);
         endCanvas.SetActive(true);
@@ -344,11 +352,14 @@ public class InputHandler : MonoBehaviour {
 
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         pureBlackObject.SetActive(true);
+        Color c = render.material.color;
+        c.a = 0;
+        render.material.color = c;
 
         float waitTime = 0.025f;
         float opacity = 0;
         while (opacity < 1) {
-            Color c = render.material.color;
+            c = render.material.color;
             opacity = opacity + ((float)10 / (float)255);
             c.a = opacity;
             render.material.color = c;
@@ -366,11 +377,14 @@ public class InputHandler : MonoBehaviour {
     IEnumerator reload() {
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         pureBlackObject.SetActive(true);
+        Color c = render.material.color;
+        c.a = 0;
+        render.material.color = c;
 
         float waitTime = 0.025f;
         float opacity = 0;
         while (opacity < 1) {
-            Color c = render.material.color;
+            c = render.material.color;
             opacity = opacity + ((float)10 / (float)255);
             c.a = opacity;
             render.material.color = c;
@@ -387,14 +401,20 @@ public class InputHandler : MonoBehaviour {
         transitioning = true;
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         pureBlackObject.SetActive(true);
+        Color c = render.material.color;
+        c.a = 1;
+        render.material.color = c;
 
-        yield return new WaitForSeconds(30);
+        for (int i = 0; i < 30; i++) {
+            if (fpsCounter != null && fpsCounter.realFPS >= 60) break;
+            yield return new WaitForSeconds(1);
+        }
         float waitTime = 0.025f;
         float opacity = 1;
         Debug.Log("fading in");
         while (opacity > 0)
         {
-            Color c = render.material.color;
+            c = render.material.color;
             opacity = opacity - ((float)10 / (float)255);
             c.a = opacity;
             render.material.color = c;

@@ -41,6 +41,10 @@ public class menuNavigation : MonoBehaviour {
         colorTable.Add("backBtn", backBtn.colors.normalColor);
         colorTable.Add("controllerToggle", controllerToggle.colors.normalColor);
         colorTable.Add("VRToggle", VRToggle.colors.normalColor);
+        Renderer render = pureBlackObject.GetComponent<Renderer>();
+        Color c = render.material.color;
+        c.a = 0;
+        render.material.color = c;
 
         //DontDestroyOnLoad(OVRCameraRig);
         //DontDestroyOnLoad(pureBlackObject);
@@ -287,11 +291,14 @@ public class menuNavigation : MonoBehaviour {
 
         Renderer render = pureBlackObject.GetComponent<Renderer>();
         pureBlackObject.SetActive(true);
+        Color c = render.material.color;
+        c.a = 0;
+        render.material.color = c;
 
         float waitTime = 0.025f;
         float opacity = 0;
         while (opacity < 1) {
-            Color c = render.material.color;
+            c = render.material.color;
             opacity = opacity + ((float)10 / (float)255);
             c.a = opacity;
             render.material.color = c;
