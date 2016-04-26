@@ -43,7 +43,7 @@ public class menuNavigation : MonoBehaviour {
         //DontDestroyOnLoad(OVRCameraRig);
         //DontDestroyOnLoad(pureBlackObject);
         selectObject();
-        //StartCoroutine(xboxDaemon());
+        StartCoroutine(xboxDaemon());
 	}
 	
 	// Update is called once per frame

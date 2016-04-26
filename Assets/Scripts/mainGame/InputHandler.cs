@@ -229,7 +229,7 @@ public class InputHandler : MonoBehaviour {
     }
     public void endGame(bool won) {
         wonGame = won;
-        ufoHandler.quitConstBeamer();
+        //ufoHandler.quitConstBeamer();
         gameIsEnded = true;
         endCanvas.GetComponent<endMenu>().status(won, HUDInfo.destruction);
         endCanvas.SetActive(true);

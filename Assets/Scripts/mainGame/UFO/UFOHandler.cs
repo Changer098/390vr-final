@@ -166,7 +166,7 @@ public class UFOHandler : MonoBehaviour {
             }
             return false;
         }
-        else if (!unlockedB)
+        /*else if (!unlockedB)
         {
             if (value >= 1)
             {
@@ -175,7 +175,7 @@ public class UFOHandler : MonoBehaviour {
                 return true;
             }
             return false;
-        }
+        }*/
         else {
             //can't upgrade any more, everything is unlocked. return false
             return false;
