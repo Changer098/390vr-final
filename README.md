@@ -1,10 +1,16 @@
-# Hand of God {Subject to Change}
+# UFO Havok
 The final project for cs390vr
 
-### Unity and VCS
-1. Clone master branch
-2. Unity -> Open Project -> Location of Cloned project
+### Demo
+<iframe  title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/QJjhTnI-5jM" frameborder="0" allowfullscreen></iframe>
+[Youtube](https://www.youtube.com/watch?v=QJjhTnI-5jM)
 
-<b>Do not create a new project</b>
-
-[How to use Git for Unity source control?](http://stackoverflow.com/questions/18225126/how-to-use-git-for-unity-source-control)
+### Screenshots
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen01.png "screen01")
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen02.png "screen02")
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen03.png "screen03")
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen04.png "screen04")
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen05.png "screen05")
+![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen06.png "screen06")
+### Play
+[Download here](wearvr.com)
