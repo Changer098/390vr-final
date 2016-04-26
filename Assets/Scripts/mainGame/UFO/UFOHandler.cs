@@ -46,7 +46,7 @@ public class UFOHandler : MonoBehaviour {
 
     bool canFireRight = true;
 
-    public bool UnlockAll = false;
+    public bool UnlockAll = true;
 
     //public Vector3 PrintingIsDumb;
 
@@ -69,8 +69,6 @@ public class UFOHandler : MonoBehaviour {
             HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 10);
             unlockedB = true;
             HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 150);
-            unlockedX = true;
-            HUDInfo.AddButton(XboxKey.X, "weaponX", 0.75f, 1);
         }
 	}
     void FixedUpdate() {
@@ -152,37 +150,26 @@ public class UFOHandler : MonoBehaviour {
     public void destroyUFO() {
         //handle destruction of UFO
         moveCamera.isAlive = false;
+        GameObject.Find("Input Manager").GetComponent<InputHandler>().endGame(false);
     }
     public bool destructionUpdate(float value) {
         //If destruction is enough for an upgrade, upgrade weapon and return true. Else return false
-        if (!unlockedA) {
-            if (value >= 1) {
+        if (!unlockedA)
+        {
+            if (value >= 1)
+            {
                 unlockedA = true;
                 HUDInfo.AddButton(XboxKey.A, "weaponA", 0.75f, 10);
                 return true;
             }
             return false;
         }
-        else if (!unlockedB) {
-            if (value >= 1) {
+        else if (!unlockedB)
+        {
+            if (value >= 1)
+            {
                 unlockedB = true;
                 HUDInfo.AddButton(XboxKey.B, "weaponB", 0.75f, 150);
-                return true;
-            }
-            return false;
-        }
-        else if (!unlockedX) {
-            if (value >= 1) {
-                unlockedX = true;
-                HUDInfo.AddButton(XboxKey.X, "weaponX", 0.75f, 1);
-                return true;
-            }
-            return false;
-        }
-        else if (!unlockedY) {
-            if (value >= 1) {
-                unlockedY = true;
-                HUDInfo.AddButton(XboxKey.Y, "weaponY", 0.75f, 5);
                 return true;
             }
             return false;
@@ -240,6 +227,7 @@ public class UFOHandler : MonoBehaviour {
             }
             else {
                 Debug.Log("Cannot fire, getAmmo <= 0");
+                HUDInfo.callReload(XboxKey.A);
             }
         }
     }
@@ -258,6 +246,7 @@ public class UFOHandler : MonoBehaviour {
                     HUDInfo.callReload(XboxKey.B);
                 }
             }
+            HUDInfo.callReload(XboxKey.B);
         }
     }
     public void fireX() {
@@ -300,6 +289,7 @@ public class UFOHandler : MonoBehaviour {
             }
             else {
                 Debug.Log("Cannot fire, getAmmo <= 0, is " + ammoCount);
+                HUDInfo.callReload(XboxAxis.RightTrigger);
             }
         }
     }
@@ -338,7 +328,14 @@ public class UFOHandler : MonoBehaviour {
                         //hit a building, do abduct stuff
                         Debug.Log("hit building with abducter: " + abductHit.collider.name);
                         //do citizen abducting
-                        abductHit.collider.GetComponent<destructable>().abductCitizen();
+                        try
+                        {
+                            abductHit.collider.GetComponent<destructable>().abductCitizen();
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.Log(e.Message);
+                        }
                     }
                 }
 

@@ -12,7 +12,8 @@ GameObject:
   - 23: {fileID: 2379040}
   - 136: {fileID: 13601666}
   - 65: {fileID: 6507514}
-  m_Layer: 0
+  - 114: {fileID: 11467018}
+  m_Layer: 10
   m_Name: tree_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,6 +77,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.58250153, y: 1.863579, z: 0.60098684}
   m_Center: {x: 0.018541634, y: 0.6477817, z: 0.12070179}
+--- !u!114 &11467018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8cd925d7c12ac4bbd9fcd88c994642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireStump: {fileID: 126760, guid: 3580956dbd3adf24faf43a118c5b9bdd, type: 2}
 --- !u!136 &13601666
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -107,6 +120,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

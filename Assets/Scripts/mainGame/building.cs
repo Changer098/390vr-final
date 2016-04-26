@@ -73,6 +73,7 @@ public class building : MonoBehaviour, destructable {
         for (int i = 0; i < childCount; i++) {
             Transform childT = destructMesh.transform.GetChild(i);
             if (childT.name == "Plane") {
+                childT.gameObject.SetActive(false);
                 Debug.Log("Skipping on: " + gameObject.name);
                 continue;
             }

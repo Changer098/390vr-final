@@ -17,7 +17,7 @@ public class treeDestroy : MonoBehaviour, destructable {
             newStump.SetActive(true);
         }
         HUDInfo.UpdateDestruction(5);
-        AudioDB.destroyTree.Play();
+        //AudioDB.destroyTree.Play();
         Destroy(gameObject);
     }
     public void abductCitizen() {
