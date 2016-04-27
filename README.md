@@ -13,4 +13,4 @@ The final project for cs390vr
 ![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen05.png "screen05")
 ![alt text](https://raw.githubusercontent.com/Changer098/390vr-final/master/screens/screen06.png "screen06")
 ### Play
-[Download here](wearvr.com)
+[Download here on WEARVR](https://www.wearvr.com/apps/390vr-ufo-havok)
